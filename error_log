@@ -1,0 +1,23 @@
+[03-Sep-2018 16:49:14 Asia/Jakarta] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/morowali/public_html/anjab/application/modules/anjab/views/detail.php on line 293
+[07-Sep-2018 09:34:15 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ':' in /home/morowali/public_html/anjab/application/modules/tugas_pokok_jabatan/views/form.php on line 51
+[15-Sep-2018 09:47:18 Asia/Jakarta] PHP Fatal error:  [] operator not supported for strings in /home/morowali/public_html/anjab/application/models/M_unit_kerja.php on line 22
+[15-Sep-2018 10:03:58 Asia/Jakarta] PHP Fatal error:  Call-time pass-by-reference has been removed in /home/morowali/public_html/anjab/application/models/M_unit_kerja.php on line 26
+[27-Sep-2018 15:38:38 Asia/Jakarta] PHP Fatal error:  Call to undefined method CI_DB_mysqli_result::dropdown() in /home/morowali/public_html/anjab/application/modules/users/controllers/Users.php on line 30
+[27-Sep-2018 15:52:05 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/morowali/public_html/anjab/application/models/M_anjab.php on line 100
+[29-Sep-2018 09:15:43 Asia/Jakarta] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 130968 bytes) in /home/morowali/public_html/anjab/system/database/DB_driver.php on line 1968
+[29-Sep-2018 09:17:20 Asia/Jakarta] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 130968 bytes) in /home/morowali/public_html/anjab/system/database/DB_driver.php on line 1968
+[29-Sep-2018 09:17:52 Asia/Jakarta] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 130968 bytes) in /home/morowali/public_html/anjab/system/database/DB_driver.php on line 1107
+[29-Sep-2018 09:18:08 Asia/Jakarta] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 130968 bytes) in /home/morowali/public_html/anjab/system/database/DB_driver.php on line 1107
+[30-Sep-2018 21:23:22 Asia/Jakarta] PHP Fatal error:  [] operator not supported for strings in /home/morowali/public_html/anjab/application/models/M_unit_kerja.php on line 81
+[30-Sep-2018 21:23:52 Asia/Jakarta] PHP Fatal error:  [] operator not supported for strings in /home/morowali/public_html/anjab/application/models/M_unit_kerja.php on line 86
+[17-Oct-2018 16:10:18 Asia/Jakarta] PHP Fatal error:  Call to undefined method Laporan::get() in /home/morowali/public_html/anjab/application/modules/laporan/controllers/Laporan.php on line 38
+[17-Oct-2018 16:18:59 Asia/Jakarta] PHP Parse error:  syntax error, unexpected 'endif' (T_ENDIF) in /home/morowali/public_html/anjab/application/modules/laporan/views/jabatan_cetak.php on line 96
+[19-Oct-2018 13:55:56 Asia/Jakarta] PHP Parse error:  syntax error, unexpected 'endif' (T_ENDIF) in /home/morowali/public_html/anjab/application/modules/anjab/views/jabatan_cetak.php on line 95
+[20-Oct-2018 09:56:49 Asia/Jakarta] PHP Fatal error:  Class 'Browsershot' not found in /home/morowali/public_html/anjab/application/modules/anjab/controllers/Anjab.php on line 237
+[20-Oct-2018 09:59:33 Asia/Jakarta] PHP Fatal error:  Default value for parameters with a class type hint can only be NULL in /home/morowali/public_html/anjab/vendor/spatie/browsershot/src/Browsershot.php on line 59
+[20-Oct-2018 10:00:23 Asia/Jakarta] PHP Fatal error:  Default value for parameters with a class type hint can only be NULL in /home/morowali/public_html/anjab/vendor/spatie/browsershot/src/Browsershot.php on line 59
+[20-Oct-2018 10:02:08 Asia/Jakarta] PHP Fatal error:  Default value for parameters with a class type hint can only be NULL in /home/morowali/public_html/anjab/vendor/spatie/browsershot/src/Browsershot.php on line 59
+[20-Oct-2018 10:12:51 Asia/Jakarta] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 91 bytes) in /home/morowali/public_html/anjab/application/libraries/dompdf/src/Css/Style.php on line 1633
+[20-Oct-2018 10:13:22 Asia/Jakarta] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 12 bytes) in /home/morowali/public_html/anjab/application/libraries/dompdf/src/Css/Style.php on line 1626
+[21-Oct-2018 17:03:06 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ';' in /home/morowali/public_html/anjab/application/helpers/app_helper.php on line 209
+[21-Oct-2018 17:03:06 Asia/Jakarta] PHP Parse error:  syntax error, unexpected ';' in /home/morowali/public_html/anjab/application/helpers/app_helper.php on line 209
