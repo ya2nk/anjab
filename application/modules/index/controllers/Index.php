@@ -14,7 +14,7 @@ class Index extends MY_Controller
 			$this->load->view('login');
 		} else {
 			//print_r($this->m_unit_kerja->detail_unit_kerja(session('unit_id')));
-			$this->load_admin('index');
+			$this->load_admin('home');
 		}
 		
 	}

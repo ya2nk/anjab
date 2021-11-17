@@ -24,7 +24,7 @@
     <link href="<?= base_url('assets/vendors/pnotify/dist/pnotify.nonblock.css'); ?>" rel="stylesheet">
 	<link href="<?= base_url('assets/vendors/jquery-confirm/jquery-confirm.min.css'); ?>" rel="stylesheet">
 	<!-- Custom Theme Style -->
-    <link href="<?= base_url('assets/build/css/custom.min.css'); ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/build/css/custom.css'); ?>" rel="stylesheet">
 	 <link href="<?= base_url('assets/vendors/bootstrap-multiselect/dist/css/bootstrap-multiselect.css'); ?>" rel="stylesheet">
 	 <link href="<?= base_url('assets/vendors/select2/dist/css/select2.min.css'); ?>" rel="stylesheet">
 	 <script src="<?= base_url('assets/vendors/jquery/dist/jquery.min.js'); ?>"></script>

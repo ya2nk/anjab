@@ -29,4 +29,12 @@ class M_master_jabatan extends MY_Model
 		$result['data'] = $rows;
 		return $result;
 	}
+	
+	function generate_datatable_picker()
+	{
+		$select = "id,kode_jabatan as value,nama_jabatan as text";
+		$where  = array('UPPER(nama_jabatan) LIKE' =>"%".strtoupper($_POST['search_param'])."%");
+		$result = $this->get_datatables($select,[],$where);
+		return $result;
+	}
 }

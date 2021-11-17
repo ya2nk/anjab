@@ -36,6 +36,7 @@ class Anjab extends ADMIN_Controller
 			$data['row'] = $row;
 			$data['kondisi'] = json_decode($row->kondisi_fisik);
 			$data['fungsi'] = json_decode($row->fungsi_pekerjaan);
+			$data['jabatanRow'] = $this->m_master_jabatan->get_by_id($row->id_jabatan);
 		}
 		$where_unit = [];
 		/*if (session('role') == 2){

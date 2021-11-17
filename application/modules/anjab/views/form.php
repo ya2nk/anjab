@@ -32,7 +32,9 @@
 							
 							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> Nama Jabatan<span class="required">*</span></label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<?= generate_select_input($jabatan,'--Pilih Jabatan--',["name"=>"id_jabatan","class"=>"form-control select3",'onchange'=>'changeJabatan(this)'],@$row->id_jabatan); ?>
+								<?php  //generate_select_input($jabatan,'--Pilih Jabatan--',["name"=>"id_jabatan","class"=>"form-control select3",'onchange'=>'changeJabatan(this)'],@$row->id_jabatan); ?>
+								<?php $this->load->view('tablepicker',['id'=>'jabatan-input','name'=>'id_jabatan','columns'=>['Kode Jabatan','Nama Jabatan'],
+												'type'=>'text','url'=>site_url('master_jabatan/get_picker'),'value_text'=>@$jabatanRow->nama_jabatan,'value'=>@$row->id_jabatan]); ?>
 							</div>
 						</div>
 						<div class="form-group">
@@ -510,6 +512,10 @@
 		$('.select3').select2();
 		$('.select3').on('select2:select', onSelectSelect2);
 		$( ".autocomplete" ).autocomplete(autocomplete_opt);
+		$('#jabatan-input').on("tablepicker:pick",function(e,row){
+			//console.log(row);
+			$('#kode_jabatan').val(row.value);
+		})
 	});	
 	
 	<?php if ($row) : ?>

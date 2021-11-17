@@ -18,6 +18,11 @@ class Master_jabatan extends ADMIN_Controller {
 		echo json_encode($this->m_master_jabatan->generate_datatable());
 	}
 	
+	function get_picker()
+	{
+		echo json_encode($this->m_master_jabatan->generate_datatable_picker());
+	}
+	
 	function cek_kode()
 	{
 		if ($this->m_master_jabatan->get_by_kode_jabatan($this->_post('kode_jabatan'))){

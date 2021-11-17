@@ -25,12 +25,12 @@
     <script src="<?= base_url('assets/vendors/jqueryvalidate/jquery.validate.min.js'); ?>"></script>
   </head>
 
-  <body class="login" style="background-color: #16214d;">
+  <body class="login" style="background-color: #2E75B6;">
     <div>
       <div class="login_wrapper" style="max-width: 450px">
         <div class="animate form login_form">
           <section class="login_content" style="border: #ccc solid 1px; background-color: white; padding-left: 25px; padding-right: 25px;">
-	          <img src="<?= base_url('assets/images/logo-kerinci.png'); ?>">
+	          <img src="<?= base_url('assets/images/kab_tolikara.png'); ?>" width="100">
             <form id="fm">
               <h1>Login Untuk Bekerja</h1>
               <div>
@@ -54,7 +54,7 @@
 
                 <div>
                   <h1><i class="fa fa-sitemap"></i> E-ANJAB</h1>
-                  <p>©2018 Pemerintah Kabupaten Kerinci<br>Dikelola oleh Bagian Organisasi Setda Kerinci</p>
+                  <p>©2021 Pemerintah Kabupaten Tolikara<br>Dikelola oleh Bagian Organisasi Setda Tolikara</p>
                 </div>
               </div>
             </form>
