@@ -9,12 +9,25 @@
 		</div>
     </div>
 	<div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Eselon<span class="required">*</span>
+        </label>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+			<select name="id_eselon" class="form-control" onchange="changeEselon(this.value)" id="id_eselon" required>
+			<option value="">--Pilih Eselon--</option>
+			<?php foreach($eselon as $ese) : ?>
+			<option value="<?= $ese->id; ?>" <?php if(isset($row->id_eselon) && $row->id_eselon == $ese->id) {echo "selected";} ?>><?= $ese->eselon ?></option>
+			<?php endforeach; ?>
+			
+			</select>
+		</div>
+    </div>
+	<div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Parent<span class="required">*</span>
         </label>
         <div class="col-md-9 col-sm-9 col-xs-12">
 			<select name="parent" class="form-control" onchange="changeParent()" id="parent">
 			<option value="0">--Pilih Parent--</option>
-			<?= printTree(buildTree($parent),0,null,@$row->parent,['id','unit_kerja']); ?>
+			<?= printTree(buildTree($parent),0,null,@$row->parent,['id','unit_kerja','eselon']); ?>
 			</select>
 		</div>
     </div>
@@ -65,4 +78,6 @@
 			$('#status_madya').prop('disabled',false);
 		}
 	}
+	
+	
 </script>

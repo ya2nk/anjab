@@ -157,7 +157,7 @@ function printTree($tree, $r = 0, $p = null,$id=0,$field=array()) {
 			$selected = 'selected';
 		}
         $dash = ($t['parent'] == 0) ? '' : str_repeat('*', $r) .' ';
-        printf("\t<option value='%d' %s>%s%s</option>\n", $t[$field[0]],$selected, $dash, $t[$field[1]]);
+        printf("\t<option value='%d' %s>%s%s(%s)</option>\n", $t[$field[0]],$selected, $dash, $t[$field[1]],@$t[$field[2]]);
         if ($t['parent'] == 0) {
             // reset $r
             //$r = 0;
@@ -247,12 +247,10 @@ function tableTree($tree,$parent = 0,$second=false) {
 			$button .= '<a href="'.site_url('anjab/form/0/'.$t['id']).'" title="Tambah Jabatan" class="btn btn-success btn-sm"><i class="fa fa-plus"></i></a>';
 		}
 		
-		if ($t['parent'] != 0 && $second == false){
-			$button .= '<button class="btn btn-primary btn-sm" onclick="loadTable('.$t['id'].')"><i class="fa fa-search"></i></button>';
-		}
 		
 		
-		printf("\t<tr class='treegrid-%s %s'><td>%s</td><td>%s</td></tr>\n",$t['id'],$class,$t['unit_kerja'],$button);
+		
+		printf("\t<tr class='treegrid-%s %s'><td>%s (%s)</td><td>%s</td></tr>\n",$t['id'],$class,$t['unit_kerja'],@$t['eselon'],$button);
 		if (isset($t['_children'])) {
             tableTree($t['_children'],$parent,$second);
         }

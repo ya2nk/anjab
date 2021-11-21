@@ -60,12 +60,13 @@ class M_unit_kerja extends MY_Model
 	
 	function get_data()
 	{
-		return $this->db->query('SELECT * FROM master_unit_kerja WHERE parent IN (SELECT id FROM master_unit_kerja WHERE parent = 0) UNION ALL SELECT * FROM master_unit_kerja WHERE parent=0 ORDER BY unit_kerja')->result_array();
+		return $this->db->query('SELECT A.*,B.eselon FROM master_unit_kerja A JOIN master_eselon B ON A.id_eselon=B.id WHERE A.parent IN (SELECT id FROM master_unit_kerja WHERE parent = 0) 
+								 UNION ALL SELECT A.*,B.eselon FROM master_unit_kerja A JOIN master_eselon B ON A.id_eselon=B.id WHERE A.parent=0 ORDER BY unit_kerja')->result_array();
 	}
 	
 	function get_detail_unit_kerja($id,&$result=array())
 	{
-		$rows = $this->where_parent($id)->result_array();
+		$rows = $this->db->select('A.*,B.eselon')->from('master_unit_kerja A')->join('master_eselon B','A.id_eselon=B.id','left')->where('A.parent',$id)->get()->result_array();
 		
 		if ($rows){
 			foreach($rows as $row){
@@ -78,7 +79,7 @@ class M_unit_kerja extends MY_Model
 	
 	function detail_unit_kerja($id,&$result=array())
 	{
-		$result[] = (array)$this->get_by_id($id);
+		$result[] = $this->db->select('A.*,B.eselon')->from('master_unit_kerja A')->join('master_eselon B','A.id_eselon=B.id','left')->where('A.id',$id)->get()->row_array();
 		$rows = $this->where_parent($id)->result_array();
 		
 		if ($rows){
@@ -113,6 +114,27 @@ class M_unit_kerja extends MY_Model
 			}
 		}
 		return array_reverse($rows);
+	}
+	
+	function cek_eselon($id_eselon,$id_unit_kerja)
+	{
+		$unit = $this->db->select('B.urutan')->from('master_unit_kerja A')->join('master_eselon B','A.id_eselon=B.id')
+							->where(['A.id'=>$id_unit_kerja])->get()->row();
+		
+							
+		$eselon = $this->db->where('id',$id_eselon)->get('master_eselon')->row();
+		
+		
+		$result = false;
+		
+		if ($unit && $eselon) {
+			if ($eselon->urutan <= $unit->urutan){
+				$result = true;
+			}
+		}
+		
+		return $result;
+		
 	}
 	
 	

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Waktu pembuatan: 06 Sep 2021 pada 19.32
--- Versi server: 10.4.20-MariaDB
--- Versi PHP: 7.3.29
+-- Host: 127.0.0.1
+-- Generation Time: Nov 21, 2021 at 11:47 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `anjab_db_sampel`
+-- Database: `anjab`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `anjab`
+-- Table structure for table `anjab`
 --
 
 CREATE TABLE `anjab` (
@@ -61,7 +61,7 @@ CREATE TABLE `anjab` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `anjab`
+-- Dumping data for table `anjab`
 --
 
 INSERT INTO `anjab` (`id`, `id_jabatan`, `id_unit_kerja`, `bahan_kerja`, `perangkat_kerja`, `korelasi_jabatan`, `tanggung_jawab`, `wewenang`, `resiko_berbahaya`, `prestasi_kerja`, `kelas_jabatan`, `status`, `jpt_madya`, `jpt_pratama`, `administrator`, `pengawas`, `pelaksana`, `keterampilan_kerja`, `bakat_kerja`, `temperamen_kerja`, `minat_kerja`, `upaya_fisik`, `kondisi_fisik`, `fungsi_pekerjaan`, `pengalaman_kerja`, `pengetahuan_kerja`, `jumlah_kebutuhan`, `jumlah_saat_ini`, `created_at`, `updated_at`) VALUES
@@ -76,7 +76,7 @@ INSERT INTO `anjab` (`id`, `id_jabatan`, `id_unit_kerja`, `bahan_kerja`, `perang
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `master_bakat_kerja`
+-- Table structure for table `master_bakat_kerja`
 --
 
 CREATE TABLE `master_bakat_kerja` (
@@ -89,7 +89,7 @@ CREATE TABLE `master_bakat_kerja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `master_bakat_kerja`
+-- Dumping data for table `master_bakat_kerja`
 --
 
 INSERT INTO `master_bakat_kerja` (`id`, `kode`, `bakat`, `keterangan`, `created_at`, `updated_at`) VALUES
@@ -108,7 +108,34 @@ INSERT INTO `master_bakat_kerja` (`id`, `kode`, `bakat`, `keterangan`, `created_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `master_fungsi_fisik`
+-- Table structure for table `master_eselon`
+--
+
+CREATE TABLE `master_eselon` (
+  `id` int(11) NOT NULL,
+  `eselon` varchar(100) NOT NULL,
+  `urutan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `master_eselon`
+--
+
+INSERT INTO `master_eselon` (`id`, `eselon`, `urutan`) VALUES
+(1, 'IIA', 1),
+(2, 'IIB', 2),
+(3, 'IIIA', 3),
+(4, 'IIIB', 4),
+(5, 'IVA', 5),
+(6, 'IVB', 6),
+(7, 'VA', 7),
+(8, 'Pelaksana', 8),
+(9, 'Fungsional Tertentu', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `master_fungsi_fisik`
 --
 
 CREATE TABLE `master_fungsi_fisik` (
@@ -121,7 +148,7 @@ CREATE TABLE `master_fungsi_fisik` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `master_fungsi_fisik`
+-- Dumping data for table `master_fungsi_fisik`
 --
 
 INSERT INTO `master_fungsi_fisik` (`id`, `kode`, `nama`, `keterangan`, `created_at`, `updated_at`) VALUES
@@ -153,7 +180,7 @@ INSERT INTO `master_fungsi_fisik` (`id`, `kode`, `nama`, `keterangan`, `created_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `master_jabatan`
+-- Table structure for table `master_jabatan`
 --
 
 CREATE TABLE `master_jabatan` (
@@ -167,7 +194,7 @@ CREATE TABLE `master_jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `master_jabatan`
+-- Dumping data for table `master_jabatan`
 --
 
 INSERT INTO `master_jabatan` (`id`, `kode_jabatan`, `nama_jabatan`, `deskripsi_jabatan`, `eselon`, `created_at`, `updated_at`) VALUES
@@ -4117,7 +4144,7 @@ INSERT INTO `master_jabatan` (`id`, `kode_jabatan`, `nama_jabatan`, `deskripsi_j
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `master_keterampilan_kerja`
+-- Table structure for table `master_keterampilan_kerja`
 --
 
 CREATE TABLE `master_keterampilan_kerja` (
@@ -4128,7 +4155,7 @@ CREATE TABLE `master_keterampilan_kerja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `master_keterampilan_kerja`
+-- Dumping data for table `master_keterampilan_kerja`
 --
 
 INSERT INTO `master_keterampilan_kerja` (`id`, `keterampilan`, `created_at`, `updated_at`) VALUES
@@ -4144,7 +4171,7 @@ INSERT INTO `master_keterampilan_kerja` (`id`, `keterampilan`, `created_at`, `up
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `master_kondisi_lingkungan_kerja`
+-- Table structure for table `master_kondisi_lingkungan_kerja`
 --
 
 CREATE TABLE `master_kondisi_lingkungan_kerja` (
@@ -4157,7 +4184,7 @@ CREATE TABLE `master_kondisi_lingkungan_kerja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `master_kondisi_lingkungan_kerja`
+-- Dumping data for table `master_kondisi_lingkungan_kerja`
 --
 
 INSERT INTO `master_kondisi_lingkungan_kerja` (`id`, `eselon`, `aspek`, `faktor`, `created_at`, `updated_at`) VALUES
@@ -4231,7 +4258,7 @@ INSERT INTO `master_kondisi_lingkungan_kerja` (`id`, `eselon`, `aspek`, `faktor`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `master_minat_kerja`
+-- Table structure for table `master_minat_kerja`
 --
 
 CREATE TABLE `master_minat_kerja` (
@@ -4243,7 +4270,7 @@ CREATE TABLE `master_minat_kerja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `master_minat_kerja`
+-- Dumping data for table `master_minat_kerja`
 --
 
 INSERT INTO `master_minat_kerja` (`id`, `kode`, `keterangan`, `created_at`, `updated_at`) VALUES
@@ -4261,7 +4288,7 @@ INSERT INTO `master_minat_kerja` (`id`, `kode`, `keterangan`, `created_at`, `upd
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `master_syarat_jabatan`
+-- Table structure for table `master_syarat_jabatan`
 --
 
 CREATE TABLE `master_syarat_jabatan` (
@@ -4274,7 +4301,7 @@ CREATE TABLE `master_syarat_jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `master_syarat_jabatan`
+-- Dumping data for table `master_syarat_jabatan`
 --
 
 INSERT INTO `master_syarat_jabatan` (`id`, `id_jabatan`, `jenis`, `syarat_jabatan`, `created_at`, `updated_at`) VALUES
@@ -6347,7 +6374,7 @@ INSERT INTO `master_syarat_jabatan` (`id`, `id_jabatan`, `jenis`, `syarat_jabata
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `master_temperamen_kerja`
+-- Table structure for table `master_temperamen_kerja`
 --
 
 CREATE TABLE `master_temperamen_kerja` (
@@ -6360,7 +6387,7 @@ CREATE TABLE `master_temperamen_kerja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `master_temperamen_kerja`
+-- Dumping data for table `master_temperamen_kerja`
 --
 
 INSERT INTO `master_temperamen_kerja` (`id`, `kode`, `nama`, `keterangan`, `created_at`, `updated_at`) VALUES
@@ -6378,7 +6405,7 @@ INSERT INTO `master_temperamen_kerja` (`id`, `kode`, `nama`, `keterangan`, `crea
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `master_tugas_pokok_jabatan`
+-- Table structure for table `master_tugas_pokok_jabatan`
 --
 
 CREATE TABLE `master_tugas_pokok_jabatan` (
@@ -6395,7 +6422,7 @@ CREATE TABLE `master_tugas_pokok_jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `master_tugas_pokok_jabatan`
+-- Dumping data for table `master_tugas_pokok_jabatan`
 --
 
 INSERT INTO `master_tugas_pokok_jabatan` (`id`, `id_jabatan`, `tugas_pokok`, `hasil_kerja_asli`, `hasil_kerja`, `jumlah_beban`, `waktu_penyelesaian`, `tahapan_kerja`, `created_at`, `updated_at`) VALUES
@@ -7109,515 +7136,541 @@ INSERT INTO `master_tugas_pokok_jabatan` (`id`, `id_jabatan`, `tugas_pokok`, `ha
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `master_unit_kerja`
+-- Table structure for table `master_unit_kerja`
 --
 
 CREATE TABLE `master_unit_kerja` (
   `id` int(11) NOT NULL,
+  `id_eselon` int(11) NOT NULL DEFAULT 0,
   `unit_kerja` varchar(200) NOT NULL,
   `parent` int(11) NOT NULL,
   `status_madya` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `master_unit_kerja`
+-- Dumping data for table `master_unit_kerja`
 --
 
-INSERT INTO `master_unit_kerja` (`id`, `unit_kerja`, `parent`, `status_madya`, `created_at`, `updated_at`) VALUES
-(3, 'Camat Batang Merangin', 186, 0, '2018-09-27 06:35:23', '2018-09-27 06:35:23'),
-(4, 'Inspektorat', 186, 0, '2018-09-27 06:35:03', '2018-09-27 06:35:03'),
-(5, 'Dinas Pendidikan', 186, 0, '2018-09-27 06:51:03', '2018-09-18 04:51:35'),
-(6, 'Dinas Lingkungan Hidup', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:14:25'),
-(7, 'Dinas Pariwisata, Kebudayaan, Pemuda dan Olahraga', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:14:46'),
-(8, 'Dinas Koperasi, Perindustrian dan Perdagangan', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:14:59'),
-(9, 'Dinas Tanaman Pangan dan Holtikultura', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:15:09'),
-(10, 'Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Tenaga Kerja', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:15:20'),
-(11, 'Dinas Pemberdayaan Masyarakat dan Pemerintahan Desa', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:15:30'),
-(12, 'Dinas Kependudukan dan Catatan Sipil', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:15:41'),
-(13, 'Dinas Perikanan', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:15:58'),
-(14, 'Dinas Perkebunan dan Peternakan ', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:16:08'),
-(15, 'Dinas Ketahanan Pangan', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:16:19'),
-(16, 'Dinas Pengendalian Penduduk, Keluarga Berencana, Pemberdayaan Perempuan dan Perlindungan Anak', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:16:30'),
-(17, 'Dinas Sosial', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:16:55'),
-(18, 'Dinas Pekerjaan Umum dan Perumahan Rakyat', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:17:08'),
-(19, 'Dinas Kesehatan', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:17:33'),
-(20, 'Satuan Polisi Pamong Praja dan Pemadam Kebakaran', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:17:43'),
-(21, 'Badan Perencanaan, Pembangunan, Penelitian dan Pengembangan Daerah', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:17:59'),
-(22, 'Badan Kepegawaian dan Pengembangan Sumber Daya Daerah', 78, 0, '2018-09-26 04:45:19', '2018-09-26 04:45:19'),
-(23, 'Badan Pengelola Pajak dan Retribusi Daerah', 186, 0, '2018-09-27 06:35:40', '2018-09-27 06:35:40'),
-(24, 'Badan Pengelola Keuangan dan Aset Daerah', 186, 0, '2018-09-27 06:35:57', '2018-09-27 06:35:57'),
-(26, 'Badan Penanggulangan Bencana Daerah', 186, 0, '2018-09-27 06:49:22', '2018-09-27 06:49:22'),
-(31, 'Asisten Pemerintahan dan Kesra', 186, 0, '2018-09-02 10:23:00', '2018-09-02 10:23:00'),
-(32, 'Bagian Tata Pemerintahan', 31, 0, '2018-09-01 07:06:22', '2018-09-01 07:06:22'),
-(33, 'Bagian Hukum', 31, 0, '2018-09-01 04:35:28', '0000-00-00 00:00:00'),
-(34, 'Bagian Humas dan Protokol', 31, 0, '2018-09-01 04:45:41', '2018-09-01 04:45:41'),
-(35, 'Bagian Kesra', 31, 0, '2018-09-01 07:07:29', '2018-09-01 07:07:29'),
-(36, 'Asisten Perekonomian dan Pembangunan', 186, 0, '2018-09-02 10:37:40', '2018-09-02 10:37:40'),
-(37, 'Bagian Ekobang dan ULP', 36, 0, '2018-09-01 04:37:12', '0000-00-00 00:00:00'),
-(38, 'Bagian Kominfo', 36, 0, '2018-09-01 04:37:36', '0000-00-00 00:00:00'),
-(39, 'Bagian Perpustakaan dan Kearsipan', 36, 0, '2018-09-01 04:38:01', '0000-00-00 00:00:00'),
-(40, 'Asisten Administrasi Umum', 186, 0, '2018-09-02 10:24:30', '2018-09-02 10:24:30'),
-(41, 'Bagian Umum', 40, 0, '2018-09-01 04:38:39', '0000-00-00 00:00:00'),
-(42, 'Bagian Organisasi ', 40, 0, '2018-09-01 04:38:53', '0000-00-00 00:00:00'),
-(43, 'Bagian Keuangan', 40, 0, '2018-09-01 04:39:11', '0000-00-00 00:00:00'),
-(44, 'Subbagian Pemerintahan Umum', 32, 0, '2018-09-01 04:40:11', '0000-00-00 00:00:00'),
-(45, 'Subbagian Pertanahan dan Batas Daerah/Wilayah', 32, 0, '2018-09-01 04:40:46', '0000-00-00 00:00:00'),
-(46, 'Subbagian Bina Kecamatan dan Kelurahan', 32, 0, '2018-09-01 05:04:18', '2018-09-01 05:04:18'),
-(47, 'Subbagian Peraturan dan Perundang-undangan', 33, 0, '2018-09-01 04:41:48', '0000-00-00 00:00:00'),
-(48, 'Subbagian Bantuan Hukum', 33, 0, '2018-09-01 04:42:38', '0000-00-00 00:00:00'),
-(49, 'Subbagian Pengkajian dan Dokumentasi Hukum', 33, 0, '2018-09-01 04:43:04', '0000-00-00 00:00:00'),
-(50, 'Subbagian Dokumentasi dan Publikasi', 34, 0, '2018-09-01 04:43:38', '0000-00-00 00:00:00'),
-(51, 'Subbagian Pelayanan Media Centre, Cetak, dan Elektronik', 34, 0, '2018-09-01 04:48:26', '0000-00-00 00:00:00'),
-(52, 'Subbagian Protokol', 34, 0, '2018-09-01 04:48:47', '0000-00-00 00:00:00'),
-(53, 'Subbagian Pendidikan dan Mental Spiritual', 35, 0, '2018-09-01 04:49:23', '0000-00-00 00:00:00'),
-(54, 'Subbagian Kesehatan Sosial', 35, 0, '2018-09-01 04:49:43', '0000-00-00 00:00:00'),
-(55, 'Subbagian Kemasyarakatan', 35, 0, '2018-09-01 04:50:02', '0000-00-00 00:00:00'),
-(56, 'Subbagian Perekonomian', 37, 0, '2018-09-01 04:50:49', '0000-00-00 00:00:00'),
-(57, 'Subbagian Pembangunan', 37, 0, '2018-09-01 04:51:13', '0000-00-00 00:00:00'),
-(58, 'Subbagian ULP', 37, 0, '2018-09-01 04:52:06', '0000-00-00 00:00:00'),
-(59, 'Subbagian Sarana dan E-Government', 38, 0, '2018-09-01 04:52:43', '0000-00-00 00:00:00'),
-(60, 'Subbagian Aplikasi dan Informatika', 38, 0, '2018-09-01 04:53:11', '0000-00-00 00:00:00'),
-(61, 'Subbagian Diseminasi Informasi dan Persandian', 38, 0, '2018-09-01 04:53:45', '0000-00-00 00:00:00'),
-(62, 'Subbagian Pembinaan dan Pengembangan ', 39, 0, '2018-09-01 04:54:19', '0000-00-00 00:00:00'),
-(63, 'Subbagian Perpustakaan', 39, 0, '2018-09-01 04:54:46', '0000-00-00 00:00:00'),
-(64, 'Subbagian Kearsipan', 39, 0, '2018-09-01 04:55:12', '0000-00-00 00:00:00'),
-(65, 'Subbagian Tata Usaha', 41, 0, '2018-09-01 04:56:34', '0000-00-00 00:00:00'),
-(66, 'Subbagian Rumah Tangga', 41, 0, '2018-09-01 04:56:54', '0000-00-00 00:00:00'),
-(67, 'Subbagian Perlengkapan', 41, 0, '2018-09-01 04:57:10', '0000-00-00 00:00:00'),
-(68, 'Subbagian Kelembagaan dan RB', 42, 0, '2018-09-01 04:57:49', '0000-00-00 00:00:00'),
-(69, 'Subbagian Ketatalaksanaan, Pelayanan Publik, Akuntabilitas Kinerja', 42, 0, '2018-09-01 04:59:05', '0000-00-00 00:00:00'),
-(70, 'Subbagian Kepegawaian dan Analisis Jabatan', 42, 0, '2018-09-02 10:27:26', '2018-09-02 10:27:26'),
-(71, 'Subbagian Perencanaan', 43, 0, '2018-09-01 04:59:54', '0000-00-00 00:00:00'),
-(72, 'Penatausahaan Keuangan', 43, 0, '2018-09-01 05:00:17', '0000-00-00 00:00:00'),
-(73, 'Subbagian Evaluasi dan Pelaporan', 43, 0, '2018-09-01 05:00:47', '0000-00-00 00:00:00'),
-(74, 'Sekretariat', 23, 0, '2018-09-01 05:07:40', '0000-00-00 00:00:00'),
-(75, 'Subbagian Umum dan Kepegawaian', 74, 0, '2018-09-01 05:08:09', '0000-00-00 00:00:00'),
-(76, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 74, 0, '2018-09-01 05:08:52', '0000-00-00 00:00:00'),
-(77, 'Bidang Pendataan, Penetapan dan Penagihan', 23, 0, '2018-09-01 05:10:01', '0000-00-00 00:00:00'),
-(78, 'Subbidang Pendaftaran dan Pendataan', 77, 0, '2018-09-01 05:10:35', '0000-00-00 00:00:00'),
-(79, 'Subbidang Pengolahan dan Penetapan', 77, 0, '2018-09-01 05:11:02', '0000-00-00 00:00:00'),
-(80, 'Subbidang Pengolahan Data Penetapan', 77, 0, '2018-09-01 05:11:47', '0000-00-00 00:00:00'),
-(81, 'Subbidang Penagihan dan Keberatan', 77, 0, '2018-09-01 05:12:17', '0000-00-00 00:00:00'),
-(82, 'Bidang Pengendalian dan Pelaporan', 23, 0, '2018-09-01 05:12:48', '0000-00-00 00:00:00'),
-(83, 'Subbidang Perencanaan dan Pengembangan Potensi', 82, 0, '2018-09-01 05:13:20', '0000-00-00 00:00:00'),
-(84, 'Subbidang Pengendalian, Evaluasi dan Pelaporan', 82, 0, '2018-09-01 05:14:02', '0000-00-00 00:00:00'),
-(85, 'Subbidang Pengendalian Surat Berharga', 82, 0, '2018-09-01 05:15:10', '0000-00-00 00:00:00'),
-(86, 'Sekretariat', 24, 0, '2018-09-01 05:16:54', '0000-00-00 00:00:00'),
-(87, 'Subbagian Umum dan Kepegawaian', 86, 0, '2018-09-01 05:17:27', '0000-00-00 00:00:00'),
-(88, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 86, 0, '2018-09-13 03:52:26', '2018-09-13 03:52:26'),
-(89, 'Bidang Anggaran', 24, 0, '2018-09-01 05:18:09', '0000-00-00 00:00:00'),
-(90, 'Subbidang Anggaran Belanja Langsung', 89, 0, '2018-09-01 05:18:37', '0000-00-00 00:00:00'),
-(91, 'Subbidang Belanja Tidak Langsung', 89, 0, '2018-09-01 05:19:02', '0000-00-00 00:00:00'),
-(92, 'Subbidang Tuntutan Ganti Rugi dan Regulasi Keuangan Daerah', 89, 0, '2018-09-01 05:19:45', '0000-00-00 00:00:00'),
-(93, 'Bidang Perbendaharaan dan Akuntansi', 24, 0, '2018-09-01 05:20:44', '0000-00-00 00:00:00'),
-(94, 'Subbidang Belanja dan Pembiyaan', 93, 0, '2018-09-01 05:25:38', '0000-00-00 00:00:00'),
-(95, 'Subbidang Akuntansi dan Pembukuan', 93, 0, '2018-09-01 05:26:07', '0000-00-00 00:00:00'),
-(96, 'Subbidang Pencataan dan Rekonsiliasi', 93, 0, '2018-09-01 05:26:48', '0000-00-00 00:00:00'),
-(97, 'Bidang Asset', 24, 0, '2018-09-01 05:27:05', '0000-00-00 00:00:00'),
-(98, 'Subbidang Perencanaan dan Pelaporan', 97, 0, '2018-09-01 05:27:39', '0000-00-00 00:00:00'),
-(99, 'Subbidang Pengawasan dan Pengendalian Pemanfaatan', 97, 0, '2018-09-01 05:28:04', '0000-00-00 00:00:00'),
-(100, 'Subbidang Inventarisasi dan Penghapusan', 97, 0, '2018-09-01 05:28:30', '0000-00-00 00:00:00'),
-(101, 'Sekretariat', 11, 0, '2018-09-01 05:58:29', '0000-00-00 00:00:00'),
-(102, 'Subbagian Umum dan Kepegawaian', 101, 0, '2018-09-01 05:58:50', '0000-00-00 00:00:00'),
-(103, 'Perencanaan Keuangan dan Pelaporan', 101, 0, '2018-09-01 05:59:08', '0000-00-00 00:00:00'),
-(104, 'Bidang Pemberdayaan Masyarakat', 11, 0, '2018-09-01 05:59:48', '0000-00-00 00:00:00'),
-(105, 'Subbidang Bina Pengembangan Kawasan Pedesaan', 104, 0, '2018-09-01 06:00:18', '0000-00-00 00:00:00'),
-(106, 'Subbidang Bina Perekonomian Desa', 104, 0, '2018-09-01 06:00:40', '0000-00-00 00:00:00'),
-(107, 'Subbidang Bina Sosial Budaya Desa', 104, 0, '2018-09-01 06:01:03', '0000-00-00 00:00:00'),
-(108, 'Bidang Pemerintahan Desa', 11, 0, '2018-09-01 06:01:22', '0000-00-00 00:00:00'),
-(109, 'Subbidang Bina Kelembagaan Pemdes', 108, 0, '2018-09-01 06:02:09', '0000-00-00 00:00:00'),
-(110, 'Subbidang Bina Aparatur Desa', 108, 0, '2018-09-01 06:02:46', '0000-00-00 00:00:00'),
-(111, 'Subbidang Bina Administrasi Desa', 108, 0, '2018-09-01 06:03:08', '0000-00-00 00:00:00'),
-(112, 'Bidang Keuangan dan Aset Desa', 11, 0, '2018-09-01 06:03:36', '0000-00-00 00:00:00'),
-(113, 'Subbidang Bina Keuangan Desa', 112, 0, '2018-09-01 06:04:39', '2018-09-01 06:04:39'),
-(114, 'Subbidang Bina Aset Desa', 112, 0, '2018-09-01 06:05:07', '0000-00-00 00:00:00'),
-(115, 'Subbidang Bina Pendapatan dan BUM Desa', 112, 0, '2018-09-01 06:05:39', '0000-00-00 00:00:00'),
-(116, 'Sekretariat', 10, 0, '2018-09-01 06:06:41', '0000-00-00 00:00:00'),
-(117, 'Subbagian Umum dan Kepegawaian', 116, 0, '2018-09-01 06:06:52', '0000-00-00 00:00:00'),
-(118, 'Perencanaan Keuangan dan Pelaporan', 116, 0, '2018-09-01 06:07:06', '0000-00-00 00:00:00'),
-(119, 'Bidang Penanaman Modal', 10, 0, '2018-09-01 06:12:06', '0000-00-00 00:00:00'),
-(120, 'Seksi Perencanaan dan Promosi', 119, 0, '2018-09-01 06:12:45', '0000-00-00 00:00:00'),
-(121, 'Seksi Kerja Sama dan Pengawasan', 119, 0, '2018-09-01 06:13:16', '0000-00-00 00:00:00'),
-(122, 'UPTD Loka Latihan Kerja', 10, 0, '2018-09-01 06:14:07', '0000-00-00 00:00:00'),
-(123, 'Bidang Perizinan dan Non Perizinan', 10, 0, '2018-09-01 06:14:42', '0000-00-00 00:00:00'),
-(126, 'Seksi Pengolahan dan Penerbitan Perizinan dan Non Perizinan', 123, 0, '2018-09-01 06:18:47', '2018-09-01 06:18:47'),
-(130, 'Seksi Data, Informasi dan Dokumentasi', 123, 0, '2018-09-01 06:15:27', '0000-00-00 00:00:00'),
-(131, 'Seksi Pelayanan Umum dan Pengaduan', 123, 0, '2018-09-01 06:17:36', '0000-00-00 00:00:00'),
-(132, 'Bidang Ketenagakerjaan', 10, 0, '2018-09-01 06:19:30', '0000-00-00 00:00:00'),
-(133, 'Seksi Pelatihan dan Peningkatan Produktivitas dan Tenaga Kerja', 132, 0, '2018-09-01 06:20:17', '0000-00-00 00:00:00'),
-(134, 'Seksi Penempatan dan Perluasan Kesempatan Kerja', 132, 0, '2018-09-01 06:20:45', '0000-00-00 00:00:00'),
-(135, 'Seksi Pengawasan dan Hubungan Indutrial', 132, 0, '2018-09-01 06:21:11', '0000-00-00 00:00:00'),
-(136, 'Sekretariat', 14, 0, '2018-09-01 06:27:29', '0000-00-00 00:00:00'),
-(137, 'Subbagian Umum dan Kepegawaian', 136, 0, '2018-09-01 06:27:56', '0000-00-00 00:00:00'),
-(138, 'Subbagian Program Perencanaan, Evaluasi dan Pelaporan', 136, 0, '2018-09-01 06:28:38', '0000-00-00 00:00:00'),
-(139, 'Bidang Perkebunan', 14, 0, '2018-09-03 07:52:10', '2018-09-03 07:52:10'),
-(140, 'Seksi Pembenihan dan Perlindungan ', 139, 0, '2018-09-03 07:54:50', '2018-09-03 07:54:50'),
-(144, 'Bidang Sarana, Prasarana dan Penyuluhan', 14, 0, '2018-09-03 07:48:39', '2018-09-03 07:48:39'),
-(145, 'Seksi Lahan, Pengairan dan pembiyaan', 144, 0, '2018-09-03 07:49:51', '2018-09-03 07:49:51'),
-(146, 'Seksi Pupuk, Pestisida dan Alsintan', 144, 0, '2018-09-03 07:50:47', '2018-09-03 07:50:47'),
-(147, 'Seksi Penyuluhan', 144, 0, '2018-09-03 07:51:22', '2018-09-03 07:51:22'),
-(148, 'Bidang Peternakan dan Kesehatan Hewan', 14, 0, '2018-09-04 06:49:50', '2018-09-04 06:49:50'),
-(153, 'Sekretariat', 18, 0, '2018-09-01 07:12:52', '0000-00-00 00:00:00'),
-(154, 'Subbagian Umum dan Kepegawaian', 153, 0, '2018-09-01 07:13:08', '0000-00-00 00:00:00'),
-(155, 'Subbagian Perencanaan, Evaluasi dan Pelaporan', 153, 0, '2018-09-01 07:14:19', '0000-00-00 00:00:00'),
-(156, 'Subbagian Keuangan dan BMD', 153, 0, '2018-09-01 07:14:38', '0000-00-00 00:00:00'),
-(157, 'Bidang Tata Ruang', 18, 0, '2018-09-01 07:15:01', '0000-00-00 00:00:00'),
-(158, 'Seksi Perencanaan Tata Ruang', 157, 0, '2018-09-01 07:15:39', '0000-00-00 00:00:00'),
-(159, 'Seksi Pemanfaatan Tata Ruang', 157, 0, '2018-09-01 07:16:10', '0000-00-00 00:00:00'),
-(160, 'Seksi Pengendalian Tata Ruang', 157, 0, '2018-09-01 07:16:36', '0000-00-00 00:00:00'),
-(161, 'Bidang Sumber daya Air', 18, 0, '2018-09-01 07:20:27', '0000-00-00 00:00:00'),
-(162, 'Perencanaan ', 161, 0, '2018-09-01 07:20:50', '0000-00-00 00:00:00'),
-(163, 'Pelaksanaan dan Pengawasan', 161, 0, '2018-09-01 07:21:12', '0000-00-00 00:00:00'),
-(164, 'Operasional dan Pemeliharaan', 161, 0, '2018-09-01 07:21:34', '0000-00-00 00:00:00'),
-(165, 'Bidang Bina Marga', 18, 0, '2018-09-01 07:21:54', '0000-00-00 00:00:00'),
-(166, 'Perencanaan ', 165, 0, '2018-09-01 07:22:21', '0000-00-00 00:00:00'),
-(167, 'Pelaksanaan dan Pengawasan', 165, 0, '2018-09-01 07:22:43', '0000-00-00 00:00:00'),
-(168, 'Operasional Pemeliharaan Jalan dan Jembatan', 165, 0, '2018-09-01 07:23:11', '0000-00-00 00:00:00'),
-(169, 'Bidang Cipta Karya', 18, 0, '2018-09-01 07:23:28', '0000-00-00 00:00:00'),
-(170, 'Seksi tata Bangunan dan Lingkungan', 169, 0, '2018-09-01 07:23:49', '0000-00-00 00:00:00'),
-(171, 'Seksi Penyehatan Lingkungan dan sanitasi', 169, 0, '2018-09-01 07:24:21', '2018-09-01 07:24:21'),
-(172, 'Seksi Pengembangan Perumahan dan Kawasan Permukiman', 169, 0, '2018-09-01 07:24:56', '0000-00-00 00:00:00'),
-(173, 'Bidang Tanggap Darurat dan Jasa Konstruksi', 18, 0, '2018-09-01 07:58:08', '2018-09-01 07:58:08'),
-(174, 'UPTD Peralatan dan Perbengkelan', 18, 0, '2018-09-01 07:26:52', '0000-00-00 00:00:00'),
-(175, 'Seksi Tanggap Darurat dan Pasca Bencana', 173, 0, '2018-09-02 06:46:21', '2018-09-02 06:46:21'),
-(176, 'Seksi Pengawasan dan Pengendalian  Mutu', 173, 0, '2018-09-02 06:47:42', '0000-00-00 00:00:00'),
-(177, 'Seksi Bina Jasa Konstruksi', 173, 0, '2018-09-02 06:48:23', '0000-00-00 00:00:00'),
-(178, 'Sekretariat', 21, 0, '2018-09-02 06:49:15', '0000-00-00 00:00:00'),
-(179, 'Subbagian Umum dan Kepegawaian', 178, 0, '2018-09-02 06:50:11', '2018-09-02 06:50:11'),
-(180, 'Subbagian Perencanaan, Evaluasi dan Pelaporan', 178, 0, '2018-09-02 06:51:08', '0000-00-00 00:00:00'),
-(181, 'Subbagian Keuangan dan BMD', 178, 0, '2018-09-02 06:51:51', '0000-00-00 00:00:00'),
-(182, 'Bidang Pengembangan Sistem Perencanaan', 21, 0, '2018-09-02 06:52:22', '0000-00-00 00:00:00'),
-(183, 'Subbidang Pengembangan Sistem Perencanaan', 182, 0, '2018-09-02 06:53:08', '0000-00-00 00:00:00'),
-(184, 'Subbidang Dokumen Perencanaan', 182, 0, '2018-09-02 06:53:49', '0000-00-00 00:00:00'),
-(186, 'Sekretariat Daerah', 0, 1, '2018-09-27 06:54:05', '2018-09-27 06:54:05'),
-(187, 'Bidang Penelitian dan Pengembangan', 21, 0, '2018-09-02 14:28:00', '0000-00-00 00:00:00'),
-(188, 'Subbidang Perencanaan Anggaran', 182, 0, '2018-09-02 14:28:59', '0000-00-00 00:00:00'),
-(189, 'Subbidang Litbang, Sosial dan Pemerintahan', 187, 0, '2018-09-02 14:29:54', '0000-00-00 00:00:00'),
-(190, 'Subbidang Litbang Ekonomi, SDA dan Inovasi Teknologi', 187, 0, '2018-09-02 14:31:26', '0000-00-00 00:00:00'),
-(191, 'Subbidang Monitoring, Pengendalian dan Evaluasi', 187, 0, '2018-09-02 14:32:42', '2018-09-02 14:32:42'),
-(192, 'Bidang Ekonomi, Sosial dan Budaya', 21, 0, '2018-09-02 14:33:38', '0000-00-00 00:00:00'),
-(193, 'Subbidang Perekonomian', 192, 0, '2018-09-02 14:34:02', '0000-00-00 00:00:00'),
-(194, 'Subbidang Kesra', 192, 0, '2018-09-02 14:34:22', '0000-00-00 00:00:00'),
-(195, 'Subbidang Pemerintahan dan Kebudayaan', 192, 0, '2018-09-02 14:35:01', '0000-00-00 00:00:00'),
-(196, 'Bidang Fisik dan Prasarana', 21, 0, '2018-09-02 14:35:27', '0000-00-00 00:00:00'),
-(197, 'Subbidang Tata Ruang dan Lingkungan Hidup', 196, 0, '2018-09-02 14:35:58', '0000-00-00 00:00:00'),
-(198, 'Subbidang Perhubungan dan Pengairan', 196, 0, '2018-09-02 14:43:36', '0000-00-00 00:00:00'),
-(199, 'Subbidang Perumahan dan Permukiman', 196, 0, '2018-09-02 15:34:57', '0000-00-00 00:00:00'),
-(200, 'Sekretariat', 22, 0, '2018-09-03 06:07:12', '0000-00-00 00:00:00'),
-(201, 'Subbagian Umum dan Kepegawaian', 200, 0, '2018-09-03 06:07:40', '0000-00-00 00:00:00'),
-(202, 'Subbagian Perencanaan Keuangan dan Pelaporan', 200, 0, '2018-09-03 06:08:24', '0000-00-00 00:00:00'),
-(203, 'Bidang Pelayanan Pendataan Pengembangan Karir dan Penilaian Kinerja', 22, 0, '2018-09-03 06:09:42', '0000-00-00 00:00:00'),
-(204, 'Subbidang Pendataan Pegawai', 203, 0, '2018-09-03 06:13:39', '0000-00-00 00:00:00'),
-(205, 'Subbidang Pengembangan Karir', 203, 0, '2018-09-03 06:15:37', '0000-00-00 00:00:00'),
-(206, 'Subbidang Penilaian Kinerja', 203, 0, '2018-09-03 06:16:06', '0000-00-00 00:00:00'),
-(207, 'Bidang Pengadaan, Kepangkatan, Mutasi dan Pensiun ', 22, 0, '2018-09-03 06:22:26', '0000-00-00 00:00:00'),
-(208, 'Subbidang  Kepangkatan', 207, 0, '2018-09-03 06:27:22', '0000-00-00 00:00:00'),
-(209, 'Subbidang Pengadaan dan Pensiun', 207, 0, '2018-09-03 06:27:50', '0000-00-00 00:00:00'),
-(210, 'Subbidang Mutasi', 207, 0, '2018-09-03 06:28:09', '0000-00-00 00:00:00'),
-(211, 'Bidang Disiplin dan Pengembangan Kompetensi Aparatur', 22, 0, '2018-09-03 06:29:05', '0000-00-00 00:00:00'),
-(212, 'Subbidang Disiplin dan Bina Profesi ASN', 211, 0, '2018-09-03 06:30:51', '0000-00-00 00:00:00'),
-(213, 'Subbidang Diklat Teknis, Struktural dan Fungsional', 211, 0, '2018-09-03 06:32:15', '0000-00-00 00:00:00'),
-(214, 'Subbidang Izin dan Cuti', 211, 0, '2018-09-03 06:32:54', '0000-00-00 00:00:00'),
-(215, 'Inspektur  Pembantu  Wilayah II ', 4, 0, '2018-09-03 06:55:09', '2018-09-03 06:55:09'),
-(216, 'Inspektur Pembantu Wilayah I', 4, 0, '2018-09-03 06:54:34', '0000-00-00 00:00:00'),
-(217, 'Inspektur  Pembantu  Wilayah III ', 4, 0, '2018-09-03 06:55:28', '0000-00-00 00:00:00'),
-(218, 'Inspektur  Pembantu  Wilayah IV', 4, 0, '2018-09-03 06:56:15', '0000-00-00 00:00:00'),
-(219, 'Sekretariat', 4, 0, '2018-09-03 06:56:26', '0000-00-00 00:00:00'),
-(220, 'Subbagian Perencanaan', 219, 0, '2018-09-03 06:57:13', '0000-00-00 00:00:00'),
-(221, 'Subbagian Evaluasi dan Pelaporan', 219, 0, '2018-09-03 06:57:51', '0000-00-00 00:00:00'),
-(222, 'Subbagian Administrasi dan Umum', 219, 0, '2018-09-03 06:58:48', '0000-00-00 00:00:00'),
-(223, 'Sekretariat', 19, 0, '2018-09-03 06:59:32', '0000-00-00 00:00:00'),
-(224, 'Subbagian Umum dan Kepegawaian', 223, 0, '2018-09-03 06:59:44', '0000-00-00 00:00:00'),
-(225, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 223, 0, '2018-09-03 07:00:33', '0000-00-00 00:00:00'),
-(226, 'Bidang Kesehatan Masyarakat', 19, 0, '2018-09-03 07:01:46', '0000-00-00 00:00:00'),
-(227, 'Seksi Kesehatan Keluarga dan Gizi', 226, 0, '2018-09-03 07:02:22', '0000-00-00 00:00:00'),
-(228, 'Seksi Promisi dan Pemberdayaan Masyarakat', 226, 0, '2018-09-03 07:03:14', '0000-00-00 00:00:00'),
-(229, 'Seksi Kesehatan Lingkungan, Kesehatan Kerja, dan Olahraga', 226, 0, '2018-09-03 07:05:33', '2018-09-03 07:05:33'),
-(230, 'Bidang Pencegahan dan Pengendalian Penyakit', 19, 0, '2018-09-03 07:08:43', '0000-00-00 00:00:00'),
-(231, 'Seksi Surveilans dan Imunisasi', 230, 0, '2018-09-03 07:09:13', '0000-00-00 00:00:00'),
-(232, 'Seksi Pencegahan dan Pengendalian penyakit Menular', 230, 0, '2018-09-03 07:09:47', '0000-00-00 00:00:00'),
-(233, 'Seksi Pencegahan dan Pengendalian Penyakit tidak Menular serta Kesehatan Jiwa', 230, 0, '2018-09-03 07:10:30', '0000-00-00 00:00:00'),
-(234, 'Bidang Pelayanan dan Sumber Daya Kesehatan', 19, 0, '2018-09-03 07:11:04', '0000-00-00 00:00:00'),
-(235, 'Seksi Pelayanan Kesehatan', 234, 0, '2018-09-03 07:11:34', '0000-00-00 00:00:00'),
-(236, 'Seksi Keparmasian&lt; alkes dan Perbekalan Kesehatan Rumah Tangga (PKRT)', 234, 0, '2018-09-03 07:12:31', '0000-00-00 00:00:00'),
-(237, 'Seksi Sumber Daya manusia Kesehatan', 234, 0, '2018-09-03 07:12:56', '0000-00-00 00:00:00'),
-(238, 'Sekretariat DPRD', 0, 1, '2018-09-27 06:56:15', '2018-09-27 06:56:15'),
-(239, 'Subbagian Tata Usaha dan Kepegawaian', 242, 0, '2018-09-03 07:23:30', '2018-09-03 07:23:30'),
-(240, 'Subbagian Rumah Tangga dan Protokoler Kehumasan', 242, 0, '2018-09-03 07:23:46', '2018-09-03 07:23:46'),
-(241, 'Sekretariat', 238, 0, '2018-09-03 07:21:27', '0000-00-00 00:00:00'),
-(242, 'Bagian Umum', 241, 0, '2018-09-03 07:23:09', '0000-00-00 00:00:00'),
-(243, 'Bagian Risalah dan Perundang-undangan', 241, 0, '2018-09-03 07:24:27', '0000-00-00 00:00:00'),
-(244, 'Subbagian Risalah dan Persidangan', 243, 0, '2018-09-03 07:25:25', '0000-00-00 00:00:00'),
-(245, 'Subbagian Perundang-undangan dan Perpustakaan', 243, 0, '2018-09-03 07:29:33', '0000-00-00 00:00:00'),
-(246, 'Bagian Keuangan', 241, 0, '2018-09-03 07:29:54', '0000-00-00 00:00:00'),
-(247, 'Subbagian Perencanaan dan Anggaran', 246, 0, '2018-09-03 07:30:18', '0000-00-00 00:00:00'),
-(248, 'Subbagian Penatausahaan Keuangan', 246, 0, '2018-09-03 07:31:01', '0000-00-00 00:00:00'),
-(249, 'Sekretariat', 12, 0, '2018-09-03 07:34:52', '0000-00-00 00:00:00'),
-(250, 'Subbagian Umum dan Kepegawaian', 249, 0, '2018-09-03 07:35:07', '0000-00-00 00:00:00'),
-(251, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 249, 0, '2018-09-03 07:35:37', '0000-00-00 00:00:00'),
-(252, 'Bidang Pelayanan Pendaftaran Penduduk', 12, 0, '2018-09-03 07:36:48', '0000-00-00 00:00:00'),
-(253, 'Seksi Identitas Penduduk', 252, 0, '2018-09-03 07:37:25', '0000-00-00 00:00:00'),
-(254, 'Seksi Pindah Datang Penduduk', 252, 0, '2018-09-03 07:38:08', '0000-00-00 00:00:00'),
-(255, 'UPTD Dukcapil', 12, 0, '2018-09-03 07:38:28', '0000-00-00 00:00:00'),
-(256, 'Seksi Penduduk', 252, 0, '2018-09-03 07:39:02', '0000-00-00 00:00:00'),
-(257, 'Bidang Pelayanan Pencatatan Sipil', 12, 0, '2018-09-03 07:39:56', '0000-00-00 00:00:00'),
-(258, 'Seksi Kelahiran', 257, 0, '2018-09-03 07:40:28', '0000-00-00 00:00:00'),
-(259, 'Seksi Perkawinan dan Perceraian', 257, 0, '2018-09-03 07:41:13', '0000-00-00 00:00:00'),
-(260, 'Seksi Perubahan Status Anak, Kewarganegaraan dan Kematian', 257, 0, '2018-09-03 07:43:49', '0000-00-00 00:00:00'),
-(261, 'Bidang Piak dan Pemanfataan Data', 12, 0, '2018-09-03 07:44:20', '0000-00-00 00:00:00'),
-(262, 'Seksi Sistem Informasi Administrasi Kependudukan', 261, 0, '2018-09-03 07:45:12', '0000-00-00 00:00:00'),
-(263, 'Seksi Pengolahan dan Penyajian Data', 261, 0, '2018-09-03 07:45:42', '0000-00-00 00:00:00'),
-(264, 'Seksi Kerja sama dan Inovasi Pelayanan', 261, 0, '2018-09-03 07:46:10', '0000-00-00 00:00:00'),
-(265, 'Seksi Produksi', 139, 0, '2018-09-03 07:55:56', '0000-00-00 00:00:00'),
-(266, 'Seksi Pengolahan dan Pemasaran', 139, 0, '2018-09-04 06:51:22', '0000-00-00 00:00:00'),
-(267, 'Seksi Perbibitan dan Produksi', 148, 0, '2018-09-04 06:52:11', '0000-00-00 00:00:00'),
-(268, 'Seksi Kesehatan Hewan', 148, 0, '2018-09-04 06:52:55', '0000-00-00 00:00:00'),
-(269, 'Seksi Kesmavet, Pengolahan dan Pemasaran', 148, 0, '2018-09-04 06:53:42', '0000-00-00 00:00:00'),
-(270, 'Sekretariat', 15, 0, '2018-09-04 07:05:34', '0000-00-00 00:00:00'),
-(271, 'Subbagian Umum dan Kepegawaian', 270, 0, '2018-09-04 07:16:58', '0000-00-00 00:00:00'),
-(272, 'Subbagian Perencanaan dan Evaluasi', 270, 0, '2018-09-04 07:17:31', '0000-00-00 00:00:00'),
-(273, 'Bidang Ketersedian dan Distribusi Pangan', 15, 0, '2018-09-04 07:18:12', '0000-00-00 00:00:00'),
-(274, 'Seksi Ketersediaan Pangan ', 273, 0, '2018-09-04 07:18:36', '0000-00-00 00:00:00'),
-(275, 'Seksi Distribusi Pangan', 273, 0, '2018-09-04 07:19:03', '0000-00-00 00:00:00'),
-(276, 'Seksi Kerawanan Pangan', 273, 0, '2018-09-04 07:19:25', '0000-00-00 00:00:00'),
-(277, 'Bidang Konsumsi dan Keamanan Pangan', 15, 0, '2018-09-04 07:19:58', '0000-00-00 00:00:00'),
-(278, 'Seksi Konsumsi Pangan', 277, 0, '2018-09-04 07:20:21', '0000-00-00 00:00:00'),
-(279, 'Seksi Penganekaragaman Pangan', 277, 0, '2018-09-04 07:20:51', '0000-00-00 00:00:00'),
-(280, 'Seksi Keamanan Pangan', 277, 0, '2018-09-04 07:21:18', '0000-00-00 00:00:00'),
-(281, 'Sekretariat', 13, 0, '2018-09-04 07:22:11', '0000-00-00 00:00:00'),
-(282, 'Subbagian Perencanaan, Keuangan dan Evaluasi', 281, 0, '2018-09-04 07:26:20', '0000-00-00 00:00:00'),
-(283, 'Subbagian Umum dan Kepegawaian', 281, 0, '2018-09-04 07:26:46', '0000-00-00 00:00:00'),
-(284, 'Bidang Perikanan Budidaya', 13, 0, '2018-09-04 07:30:32', '2018-09-04 07:30:32'),
-(286, 'Seksi Produksi dan Usaha Budidya', 284, 0, '2018-09-04 07:30:13', '0000-00-00 00:00:00'),
-(287, 'Seksi Sarana dan Prasarana Budidya', 284, 0, '2018-09-04 07:32:00', '0000-00-00 00:00:00'),
-(288, 'Seksi Kesehatan Ikan dan Lingkungan Budidaya', 284, 0, '2018-09-27 07:50:03', '2018-09-27 07:50:03'),
-(289, 'Bidang Perikanan Perairan Umum', 13, 0, '2018-09-04 07:34:18', '0000-00-00 00:00:00'),
-(290, 'Seksi Penangkapan', 289, 0, '2018-09-04 07:35:05', '0000-00-00 00:00:00'),
-(291, 'Seksi Penguatan Daya Saing Produk Perikanan', 289, 0, '2018-09-04 07:36:00', '0000-00-00 00:00:00'),
-(292, 'Seksi Pengawasan Sumber Daya Perikanan', 289, 0, '2018-09-04 07:36:38', '0000-00-00 00:00:00'),
-(293, 'Sekretariat', 20, 0, '2018-09-04 07:41:28', '0000-00-00 00:00:00'),
-(294, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 293, 0, '2018-09-05 03:52:52', '0000-00-00 00:00:00'),
-(295, 'Bidang Penegakan Peraturan Daerah', 20, 0, '2018-09-05 03:53:48', '0000-00-00 00:00:00'),
-(296, 'Seksi Pemeriksaan dan Penindakan', 295, 0, '2018-09-05 03:54:46', '0000-00-00 00:00:00'),
-(297, 'Seksi Pengawasan dan Pembinaan', 295, 0, '2018-09-05 03:55:49', '0000-00-00 00:00:00'),
-(298, 'Bidang Trantib Linmas', 20, 0, '2018-09-05 03:56:54', '0000-00-00 00:00:00'),
-(299, 'Seksi Trantib', 298, 0, '2018-09-05 03:57:52', '0000-00-00 00:00:00'),
-(300, 'Seksi Perlindungan Masyarakat', 298, 0, '2018-09-05 03:58:43', '0000-00-00 00:00:00'),
-(301, 'Bidang Pemadam Kebakaran', 20, 0, '2018-09-05 03:59:15', '0000-00-00 00:00:00'),
-(302, 'Seksi Pencegahan dan Penanggulangan Kebakaran', 301, 0, '2018-09-05 03:59:58', '0000-00-00 00:00:00'),
-(303, 'Seksi Sarana dan Prasarana Kebakaran', 301, 0, '2018-09-05 04:00:47', '0000-00-00 00:00:00'),
-(304, 'Pos Kecamatan', 301, 0, '2018-09-05 04:01:26', '0000-00-00 00:00:00'),
-(305, 'Sekretariat', 9, 0, '2018-09-05 04:04:13', '0000-00-00 00:00:00'),
-(306, 'Subbagian Umum dan Kepegawaian', 305, 0, '2018-09-05 04:04:23', '0000-00-00 00:00:00'),
-(308, 'Subbagian Perencanaan dan Keuangan ', 305, 0, '2018-09-05 04:05:12', '0000-00-00 00:00:00'),
-(309, 'Bidang Tanaman Pangan', 9, 0, '2018-09-05 04:11:38', '0000-00-00 00:00:00'),
-(310, 'Seksi Perbenihan dan Perlindungan', 309, 0, '2018-09-05 04:12:19', '0000-00-00 00:00:00'),
-(311, 'Seksi Produksi', 309, 0, '2018-09-05 04:13:58', '0000-00-00 00:00:00'),
-(312, 'Seksi Pengolahan dan Pemasaran ', 309, 0, '2018-09-05 04:14:42', '0000-00-00 00:00:00'),
-(313, 'Bidang Holtikultura', 309, 0, '2018-09-05 04:15:14', '0000-00-00 00:00:00'),
-(314, 'Seksi Perbenihan dan Perlindungan ', 313, 0, '2018-09-05 04:15:50', '0000-00-00 00:00:00'),
-(315, 'Seksi Pengolahan dan Pemasaran', 313, 0, '2018-09-05 04:17:32', '0000-00-00 00:00:00'),
-(316, 'Seksi Produksi', 313, 0, '2018-09-05 04:17:58', '0000-00-00 00:00:00'),
-(317, 'Bidang PSP dan Penyuluhan', 9, 0, '2018-09-05 04:18:36', '0000-00-00 00:00:00'),
-(318, 'Seksi Lahan, Irigasi dan Pembiayaan', 317, 0, '2018-09-05 04:19:02', '0000-00-00 00:00:00'),
-(319, 'Seksi Pupuk, Pestisida dan Pengelolaan Air', 317, 0, '2018-09-05 04:19:30', '0000-00-00 00:00:00'),
-(320, 'Seksi Penyuluhan', 316, 0, '2018-09-05 04:20:31', '0000-00-00 00:00:00'),
-(321, 'Sekretariat', 17, 0, '2018-09-05 04:28:02', '0000-00-00 00:00:00'),
-(322, 'Kepala Sub bagian Umum dan Kepegawaian Dinas Sosial', 321, 0, '2018-09-19 03:27:30', '2018-09-19 03:27:30'),
-(323, 'Kepala Sub bagian Perencanaan, Keuangan dan Pelaporan Dinas Sosial', 321, 0, '2018-09-19 03:28:30', '2018-09-19 03:28:30'),
-(324, 'Bidang Perlindungan dan Jaminan Sosial', 17, 0, '2018-09-05 04:30:26', '0000-00-00 00:00:00'),
-(325, 'Seksi Perlindungan Sosial Korban Bencana Alam', 324, 0, '2018-09-05 04:31:05', '0000-00-00 00:00:00'),
-(326, 'Seksi Perlindungan Sosial Korban Bencana Sosial dan Orang Terlantar', 324, 0, '2018-09-05 04:31:59', '0000-00-00 00:00:00'),
-(327, 'Seksi Jaminan Sosial Keluarga', 324, 0, '2018-09-05 04:32:39', '0000-00-00 00:00:00'),
-(328, 'Bidang Rehabilitasi Sosial', 17, 0, '2018-09-05 04:33:07', '0000-00-00 00:00:00'),
-(329, 'Seksi Rehabilitasi Sosial Anak dan lanjut Usia', 328, 0, '2018-09-05 04:37:12', '0000-00-00 00:00:00'),
-(330, 'Seksi Rehabilitasi Sosial Penyandang Disabilitas', 328, 0, '2018-09-05 04:37:51', '0000-00-00 00:00:00'),
-(331, 'Seksi Rehabilitasi Sosial Tuna Sosial, Korban Penyalahgunaan Napza dan Perdagangan Orang', 328, 0, '2018-09-05 04:38:44', '0000-00-00 00:00:00'),
-(332, 'Bidang Pemberdayaan Sosial dan Penanganan Fakir Miskin', 17, 0, '2018-09-05 04:51:11', '2018-09-05 04:51:11'),
-(333, 'Seksi Penanganan Fakir Miskin Pedesaan dan Perkotaan', 332, 0, '2018-09-05 05:01:22', '0000-00-00 00:00:00'),
-(334, 'Seksi Kelembagaan', 332, 0, '2018-09-05 05:01:44', '0000-00-00 00:00:00'),
-(335, 'Seksi Kepahlawanan, Keperintisan dan Kesetiakawanan Sosial', 332, 0, '2018-09-05 05:02:26', '0000-00-00 00:00:00'),
-(336, 'Sekretariat', 6, 0, '2018-09-05 05:02:53', '0000-00-00 00:00:00'),
-(337, 'Subbagian Umum dan Kepegawaian', 336, 0, '2018-09-05 05:03:04', '0000-00-00 00:00:00'),
-(338, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 336, 0, '2018-09-05 05:03:16', '0000-00-00 00:00:00'),
-(339, 'Bidang Perlindungan SDA dan Peningkatan Kapasitas Lingkungan', 6, 0, '2018-09-05 05:03:49', '0000-00-00 00:00:00'),
-(340, 'Seksi Konservasi SDA dan Pertamanan', 339, 0, '2018-09-05 05:04:21', '0000-00-00 00:00:00'),
-(341, 'Seksi Mitigasi Adaptasi Perubahan Iklim', 339, 0, '2018-09-05 05:04:49', '0000-00-00 00:00:00'),
-(342, 'Seksi Peningkatan Kapasitas Lingkungan', 339, 0, '2018-09-05 05:05:12', '0000-00-00 00:00:00'),
-(343, 'Bidang Pengendalian dan Penataan Hukum Lingkungan ', 6, 0, '2018-09-05 05:06:22', '0000-00-00 00:00:00'),
-(344, 'Seksi Perencanaan dan Kajian Dampak Lingkungan', 343, 0, '2018-09-05 05:06:45', '0000-00-00 00:00:00'),
-(345, 'Seksi Pemantauan dan pengawasan Lingkungan', 343, 0, '2018-09-05 05:07:14', '0000-00-00 00:00:00'),
-(346, 'Seksi Pengaduan dan Penataan Hukum Lingkungan', 343, 0, '2018-09-05 05:09:32', '0000-00-00 00:00:00'),
-(347, 'Bidang Persampahan dan Limbah', 6, 0, '2018-09-05 05:11:23', '0000-00-00 00:00:00'),
-(348, 'Seksi Pengelolaan Persampahan', 347, 0, '2018-09-05 05:13:16', '0000-00-00 00:00:00'),
-(349, 'Seksi Pengelolaan Limbah', 347, 0, '2018-09-05 05:13:46', '2018-09-05 05:13:46'),
-(350, 'Seksi Sarana Prasarana Sampah dan Limbah', 347, 0, '2018-09-05 05:15:06', '0000-00-00 00:00:00'),
-(351, 'Sekretariat', 8, 0, '2018-09-05 05:38:45', '0000-00-00 00:00:00'),
-(352, 'Subbagian Umum dan Kepegawaian', 351, 0, '2018-09-05 05:40:26', '0000-00-00 00:00:00'),
-(353, 'Subbagian Perencanaan, Evaluasi dan Pelaporan', 351, 0, '2018-09-05 05:40:58', '0000-00-00 00:00:00'),
-(354, 'Subbagian Keuangan dan BMD', 351, 0, '2018-09-05 05:41:21', '0000-00-00 00:00:00'),
-(355, 'Bidang Pemberdayaan Koperasi', 8, 0, '2018-09-05 05:41:51', '0000-00-00 00:00:00'),
-(356, 'Seksi Kelembagaan Koperasi', 355, 0, '2018-09-05 05:42:14', '0000-00-00 00:00:00'),
-(357, 'Seksi Pengembangan Usaha, Permodalan dan SDM', 355, 0, '2018-09-05 05:42:48', '0000-00-00 00:00:00'),
-(358, 'Seksi Pembinaan dan Pengawasan', 355, 0, '2018-09-05 05:43:20', '0000-00-00 00:00:00'),
-(359, 'Bidang Pemberdayaan UMKM dan Industri', 8, 0, '2018-09-05 08:01:07', '0000-00-00 00:00:00'),
-(360, 'Seksi Pendataan Kelembagaan UMKM dan Industri', 359, 0, '2018-09-05 08:20:11', '2018-09-05 08:20:11'),
-(361, 'Seksi Pengembangan Usaha dan SDM', 359, 0, '2018-09-05 08:02:34', '0000-00-00 00:00:00'),
-(362, 'Seksi Sarana Industri dan UMKM', 359, 0, '2018-09-05 08:03:31', '0000-00-00 00:00:00'),
-(363, 'Bidang Perdagangan', 8, 0, '2018-09-05 08:04:06', '0000-00-00 00:00:00'),
-(364, 'Seksi Pengembangan Perdagangan', 363, 0, '2018-09-05 08:04:37', '0000-00-00 00:00:00'),
-(365, 'Seksi Promosi dan Pemasaran', 363, 0, '2018-09-05 08:30:39', '0000-00-00 00:00:00'),
-(366, 'Dinas Perhubungan', 186, 0, '2018-09-27 06:48:39', '2018-09-27 06:48:39'),
-(367, 'Bidang Lalu Lintas ', 366, 0, '2018-09-06 06:49:52', '0000-00-00 00:00:00'),
-(368, 'Seksi lalu Lintas', 367, 0, '2018-09-06 06:50:21', '0000-00-00 00:00:00'),
-(369, 'Seksi Angkutan', 367, 0, '2018-09-06 06:50:38', '0000-00-00 00:00:00'),
-(370, 'Seksi Pengujian Sarana', 367, 0, '2018-09-06 06:51:00', '0000-00-00 00:00:00'),
-(371, 'Sekretariat', 366, 0, '2018-09-06 06:51:16', '0000-00-00 00:00:00'),
-(372, 'Subbagian Perencanaan dan Keuangan ', 371, 0, '2018-09-06 06:52:51', '0000-00-00 00:00:00'),
-(373, 'Subbagian Umum dan Kepegawaian', 371, 0, '2018-09-06 06:53:06', '0000-00-00 00:00:00'),
-(374, 'Bidang Prasarana dan Keselamatan', 366, 0, '2018-09-06 06:54:47', '0000-00-00 00:00:00'),
-(375, 'seksi Prasarana', 374, 0, '2018-09-06 06:55:31', '0000-00-00 00:00:00'),
-(376, 'Seksi Pengembangan', 374, 0, '2018-09-06 07:00:58', '0000-00-00 00:00:00'),
-(377, 'Seksi Keselamatan', 374, 0, '2018-09-06 07:01:17', '0000-00-00 00:00:00'),
-(378, 'Sekretariat', 5, 0, '2018-09-06 07:04:46', '0000-00-00 00:00:00'),
-(379, 'Subbagian Umum dan Kepegawaian', 378, 0, '2018-09-06 07:05:21', '0000-00-00 00:00:00'),
-(380, 'Subbagian Keuangan dan BMD', 378, 0, '2018-09-06 07:05:37', '0000-00-00 00:00:00'),
-(381, 'Subbagian Perencanaan, Evaluasi dan Pelaporan', 378, 0, '2018-09-06 07:06:23', '0000-00-00 00:00:00'),
-(382, 'Bidang Paud dan Pendidikan Non Formal', 5, 0, '2018-09-06 07:08:31', '0000-00-00 00:00:00'),
-(383, 'Seksi Pendidikan Anak Usia Dini', 382, 0, '2018-09-06 07:11:54', '0000-00-00 00:00:00'),
-(384, 'Seksi Pendidikan Kesetaraan', 382, 0, '2018-09-06 07:12:47', '0000-00-00 00:00:00'),
-(385, 'Seksi Pendidikan Non Formal', 382, 0, '2018-09-06 07:14:23', '0000-00-00 00:00:00'),
-(386, 'Bidang Pembinaan dan Pendidikan Dasar', 5, 0, '2018-09-06 07:15:04', '2018-09-06 07:15:04'),
-(387, 'Seksi Kurikulum dan Peserta Didik SD', 386, 0, '2018-09-06 07:16:26', '0000-00-00 00:00:00'),
-(388, 'Seksi Kurikulum dan Peserta Didik SMP', 386, 0, '2018-09-06 07:16:52', '0000-00-00 00:00:00'),
-(389, 'Seksi Penjamin Mutu Pendidikan Dasar', 386, 0, '2018-09-06 07:17:26', '0000-00-00 00:00:00'),
-(390, 'Bidang Pembinaan Ketenagaan', 5, 0, '2018-09-06 07:18:04', '0000-00-00 00:00:00'),
-(391, 'Seksi Kesejahteraan Guru dan Tenaga Kependidikan', 390, 0, '2018-09-06 07:26:49', '0000-00-00 00:00:00'),
-(392, 'Seksi Peningkatan SDM Guru dan Tenaga Kependidikan', 390, 0, '2018-09-06 07:31:07', '0000-00-00 00:00:00'),
-(393, 'Seksi Promosi dan Mutasi Guru dan tenaga Kependidikan', 390, 0, '2018-09-06 07:31:47', '0000-00-00 00:00:00'),
-(394, 'Bidang Kelembagaan dan Sarana dan Prasarana', 5, 0, '2018-09-06 07:32:35', '0000-00-00 00:00:00'),
-(395, 'Seksi Kelembagaan dan Sarana Prasarana SD', 394, 0, '2018-09-06 07:33:31', '0000-00-00 00:00:00'),
-(396, 'Seksi Kelembagaan dan Sarana Prasarana SMP', 394, 0, '2018-09-06 07:34:17', '0000-00-00 00:00:00'),
-(397, 'Seksi Kelembagaan dan sarana Prasarana Paud, UPT dan Dinas', 394, 0, '2018-09-06 07:35:48', '0000-00-00 00:00:00'),
-(398, 'Sekretariat', 16, 0, '2018-09-06 07:45:05', '0000-00-00 00:00:00'),
-(399, 'Subbagian Umum dan Kepegawaian', 398, 0, '2018-09-06 07:46:37', '0000-00-00 00:00:00'),
-(400, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 398, 0, '2018-09-06 07:54:51', '0000-00-00 00:00:00'),
-(401, 'Bidang Pengendalian Penduduk, Penyuluhan dan Penggerakan', 16, 0, '2018-09-06 07:55:56', '0000-00-00 00:00:00'),
-(402, 'Seksi Advokasi dan Penggerakan', 401, 0, '2018-09-06 07:56:21', '0000-00-00 00:00:00'),
-(403, 'Seksi Penyuluhan dan Pendayagunaan PKB/PLKB dan Kader KB', 401, 0, '2018-09-06 07:57:11', '0000-00-00 00:00:00'),
-(404, 'Seksi Pengendalian Penduduk dan Informasi Keluarga', 401, 0, '2018-09-06 07:57:41', '0000-00-00 00:00:00'),
-(405, 'Bidang KB, Ketahanan dan Kesejahteraan Keluarga', 16, 0, '2018-09-06 07:58:38', '0000-00-00 00:00:00'),
-(406, 'Seksi Jaminan Ber-KB', 405, 0, '2018-09-06 07:59:36', '0000-00-00 00:00:00'),
-(407, 'Seksi Pembinaan Kesejahteraan Ber-KB', 405, 0, '2018-09-06 08:01:44', '2018-09-06 08:01:44'),
-(408, 'Seksi Ketahanan dan Kesejahteraan Keluarga', 405, 0, '2018-09-06 08:01:19', '0000-00-00 00:00:00'),
-(409, 'Bidang Pemberdayaan Perempuan dan Perlindungan Anak', 16, 0, '2018-09-06 08:02:37', '0000-00-00 00:00:00'),
-(410, 'Seksi Pengarusutamaan Gender, Pemberdayaan Perempuan', 409, 0, '2018-09-06 08:03:48', '0000-00-00 00:00:00'),
-(411, 'Seksi Perlindungan Perempuan, Anak dan PKK', 409, 0, '2018-09-06 08:04:21', '0000-00-00 00:00:00'),
-(412, 'Seksi Pemenuhan Hak Anak', 408, 0, '2018-09-06 08:05:19', '0000-00-00 00:00:00'),
-(413, 'Sekretariat', 7, 0, '2018-09-06 08:06:11', '0000-00-00 00:00:00'),
-(414, 'Subbagian Umum dan Kepegawaian', 413, 0, '2018-09-06 08:06:26', '0000-00-00 00:00:00'),
-(415, 'Subbagian Perencanaan, Evaluasi dan Pelaporan', 413, 0, '2018-09-06 08:06:44', '0000-00-00 00:00:00'),
-(416, 'Subbagian Keuangan dan BMD', 413, 0, '2018-09-06 08:12:46', '0000-00-00 00:00:00'),
-(417, 'Bidang Pemasaran dan Promosi Wisata', 7, 0, '2018-09-06 08:13:16', '0000-00-00 00:00:00'),
-(418, 'Seksi Promosi', 417, 0, '2018-09-06 08:13:41', '0000-00-00 00:00:00'),
-(419, 'Seksi Analisa Pasar Pariwisata', 417, 0, '2018-09-06 08:14:04', '0000-00-00 00:00:00'),
-(420, 'Seksi Sarana Promosi', 417, 0, '2018-09-06 08:14:25', '0000-00-00 00:00:00'),
-(421, 'Bidang Kebudayaan', 7, 0, '2018-09-06 08:14:40', '0000-00-00 00:00:00'),
-(422, 'Seksi Pembinaan dan Pergelaran Seni Budaya', 421, 0, '2018-09-06 08:15:09', '0000-00-00 00:00:00'),
-(423, 'Seksi Nilai Budaya, Sejarah dan Kepurbakalaan', 421, 0, '2018-09-06 08:15:44', '0000-00-00 00:00:00'),
-(424, 'Seksi Cagar Budaya dan Permuseuman', 421, 0, '2018-09-06 08:16:21', '0000-00-00 00:00:00'),
-(425, 'Bidang Kepemudaan dan Keolahragaan ', 7, 0, '2018-09-06 08:17:01', '0000-00-00 00:00:00'),
-(426, 'Seksi Kepemudaan', 425, 0, '2018-09-06 08:17:30', '0000-00-00 00:00:00'),
-(427, 'Seksi Keolahragaab', 425, 0, '2018-09-06 08:18:24', '0000-00-00 00:00:00'),
-(428, 'Seksi Sarana/Prasarana', 425, 0, '2018-09-06 08:18:52', '0000-00-00 00:00:00'),
-(429, 'Sekretariat', 3, 0, '2018-09-10 02:53:59', '0000-00-00 00:00:00'),
-(430, 'Subbagian Umum dan Kepegawaian', 429, 0, '2018-09-10 02:54:16', '0000-00-00 00:00:00'),
-(432, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 429, 0, '2018-09-10 02:55:41', '0000-00-00 00:00:00'),
-(433, 'Seksi Ekonomi dan Pembangunan', 3, 0, '2018-09-10 02:57:24', '0000-00-00 00:00:00'),
-(434, 'Seksi Kesra dan Pelayanan Umum', 3, 0, '2018-09-10 02:58:00', '0000-00-00 00:00:00'),
-(435, 'Seksi Keuangan Desa', 3, 0, '2018-09-10 02:58:25', '0000-00-00 00:00:00'),
-(436, 'Seksi Trantib', 3, 0, '2018-09-10 02:58:49', '0000-00-00 00:00:00'),
-(437, 'Camat Keliling Danau', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(438, 'Camat Gunung Kerinci', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(439, 'Camat Air hangat Timur', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(440, 'Camat Depati Tujuh', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(442, 'Camat Batang Merangin', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(443, 'Camat Air hangat', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(444, 'Camat Kayu Aro', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(445, 'Camat Gunung Tujuh', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(446, 'Camat Gunung Raya', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(447, 'Cama Kayu Aro Barat', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(448, 'Camat Sitinjau Laut', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(450, 'Camat Siulak', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(451, 'Camat Kayu Aro Barat', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(452, 'Camat Bukit Kerman', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(454, 'Camat Siulak Mukai', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
-(455, 'Sekretariat', 437, 0, '2018-09-10 03:49:25', '0000-00-00 00:00:00'),
-(456, 'Subbagian Umum dan Kepegawaian', 455, 0, '2018-09-10 03:49:50', '0000-00-00 00:00:00'),
-(457, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 455, 0, '2018-09-10 04:25:04', '0000-00-00 00:00:00'),
-(458, 'Seksi Kesra dan Pelayanan Umum', 437, 0, '2018-09-10 04:25:39', '0000-00-00 00:00:00'),
-(459, 'Seksi Pemerintahan ', 437, 0, '2018-09-10 04:35:09', '2018-09-10 04:35:09'),
-(460, 'Seksi Ekonomi dan Pembangunan', 437, 0, '2018-09-10 04:29:44', '0000-00-00 00:00:00'),
-(461, 'Seksi Pemerintahan', 3, 0, '2018-09-10 04:34:25', '0000-00-00 00:00:00'),
-(463, 'Seksi Trantib', 437, 0, '2018-09-10 04:35:50', '0000-00-00 00:00:00'),
-(464, 'Seksi Keuangan Desa', 437, 0, '2018-09-10 04:37:26', '0000-00-00 00:00:00'),
-(465, 'Sekretariat', 438, 0, '2018-09-10 04:40:42', '0000-00-00 00:00:00'),
-(466, 'Seksi Pemerintahan', 438, 0, '2018-09-10 05:09:43', '2018-09-10 05:09:43'),
-(467, 'Subbagian Umum dan Kepegawaian', 465, 0, '2018-09-10 04:41:15', '0000-00-00 00:00:00'),
-(468, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 465, 0, '2018-09-10 04:41:44', '2018-09-10 04:41:44'),
-(469, 'Seksi Kesra dan Pelayanan Umum', 438, 0, '2018-09-10 04:47:52', '2018-09-10 04:47:52'),
-(472, 'Seksi Keuangan Desa', 438, 0, '2018-09-10 04:46:54', '0000-00-00 00:00:00'),
-(473, 'Seksi Ekonomi dan Pembangunan', 438, 0, '2018-09-10 05:14:21', '0000-00-00 00:00:00'),
-(474, 'Seksi Trantib', 438, 0, '2018-09-10 05:14:46', '0000-00-00 00:00:00'),
-(475, 'Sekretariat', 439, 0, '2018-09-10 05:15:01', '0000-00-00 00:00:00'),
-(476, 'Subbagian Umum dan Kepegawaian', 475, 0, '2018-09-10 05:15:18', '0000-00-00 00:00:00'),
-(477, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 475, 0, '2018-09-17 03:39:57', '0000-00-00 00:00:00'),
-(478, 'Seksi Pemerintahan', 439, 0, '2018-09-17 03:41:14', '0000-00-00 00:00:00'),
-(479, 'Seksi Ekonomi dan Pembangunan', 439, 0, '2018-09-17 03:41:42', '0000-00-00 00:00:00'),
-(480, 'Seksi Kesra dan Pelayanan Umum', 439, 0, '2018-09-17 03:44:43', '0000-00-00 00:00:00'),
-(481, 'Seksi Keuangan Desa', 439, 0, '2018-09-17 03:45:05', '0000-00-00 00:00:00'),
-(482, 'Seksi Trantib', 439, 0, '2018-09-17 03:46:03', '0000-00-00 00:00:00'),
-(483, 'Sekretariat', 440, 0, '2018-09-17 03:47:09', '0000-00-00 00:00:00'),
-(484, 'Subbagian Umum dan Kepegawaian', 483, 0, '2018-09-17 03:47:45', '0000-00-00 00:00:00'),
-(485, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 483, 0, '2018-09-17 03:50:25', '0000-00-00 00:00:00'),
-(486, 'Seksi Pemerintahan', 440, 0, '2018-09-17 04:10:42', '0000-00-00 00:00:00'),
-(487, 'Badan Kesatuan Bangsa dan Politik', 186, 0, '2018-09-27 06:49:01', '2018-09-27 06:49:01'),
-(488, 'Sekretariat', 487, 0, '2018-09-17 05:02:30', '0000-00-00 00:00:00'),
-(489, 'Subbagian Umum dan Kepegawaian', 488, 0, '2018-09-17 05:02:53', '0000-00-00 00:00:00'),
-(490, 'Subbagian Program, evaluasi dan pelaporan', 488, 0, '2018-09-17 05:04:42', '0000-00-00 00:00:00'),
-(491, 'Subbagian Keuangan', 488, 0, '2018-09-17 05:05:09', '0000-00-00 00:00:00'),
-(492, 'Bidang Pengembangan Nilai-Nilai Kebangsaan', 487, 0, '2018-09-17 05:09:43', '0000-00-00 00:00:00'),
-(493, 'Subbidang Ketahanan Bangsa', 492, 0, '2018-09-17 05:10:09', '0000-00-00 00:00:00'),
-(494, 'Subbidang Pranata Sosial dan Budaya Bangsa', 492, 0, '2018-09-17 05:14:26', '0000-00-00 00:00:00'),
-(495, 'Bidang Penanganan Konflik dan Fasilitas Ormas', 487, 0, '2018-09-17 05:15:02', '0000-00-00 00:00:00'),
-(496, 'Subbidang Penanganan Konflik', 495, 0, '2018-09-17 05:16:12', '0000-00-00 00:00:00'),
-(497, 'Subbidang Fasilitas Ormas', 495, 0, '2018-09-17 05:16:50', '0000-00-00 00:00:00'),
-(498, 'Bidang Perlindungan Masyarakat', 487, 0, '2018-09-17 05:17:38', '0000-00-00 00:00:00'),
-(499, 'Subbidang Peningkatan Sumber Daya Manusia dan Perlindungan masyarakat', 498, 0, '2018-09-17 05:24:09', '0000-00-00 00:00:00'),
-(500, 'Subbidang Ketentraman', 498, 0, '2018-09-17 05:24:52', '0000-00-00 00:00:00'),
-(501, 'Bidang Pembinaan Politik', 487, 0, '2018-09-17 05:25:24', '0000-00-00 00:00:00'),
-(502, 'Subbidang Fasilitas Pemilu', 501, 0, '2018-09-17 05:28:24', '0000-00-00 00:00:00'),
-(503, 'Subbidang Komunikasi dan Pendidikan Politik', 501, 0, '2018-09-17 05:28:57', '0000-00-00 00:00:00'),
-(504, 'Sekretariat', 26, 0, '2018-09-17 05:53:24', '0000-00-00 00:00:00'),
-(505, 'Subbagian Umum dan Kepegawaian', 504, 0, '2018-09-17 05:54:35', '0000-00-00 00:00:00'),
-(506, 'Subbagian Program ', 504, 0, '2018-09-17 06:06:25', '0000-00-00 00:00:00'),
-(507, 'Subbagian Keuangan', 504, 0, '2018-09-17 06:06:54', '0000-00-00 00:00:00'),
-(508, 'Bidang Pencegahan dan Kesiapsiagaan', 26, 0, '2018-09-17 06:09:49', '0000-00-00 00:00:00'),
-(509, 'Seksi Pencegahan', 508, 0, '2018-09-17 07:36:36', '0000-00-00 00:00:00'),
-(510, 'Seksi Kesiapsiagaan ', 508, 0, '2018-09-17 07:38:17', '0000-00-00 00:00:00'),
-(511, 'Bidang Kedaruratan dan Logistik', 26, 0, '2018-09-17 07:38:51', '0000-00-00 00:00:00'),
-(512, 'Seksi Kedaruratan', 511, 0, '2018-09-17 07:44:42', '0000-00-00 00:00:00'),
-(513, 'Seksi Logistik', 511, 0, '2018-09-17 07:45:07', '0000-00-00 00:00:00'),
-(514, 'Bidang Rehabilitasi dan Rekonstruksi', 26, 0, '2018-09-17 07:45:45', '0000-00-00 00:00:00'),
-(515, 'Seksi Rehabilitasi', 514, 0, '2018-09-17 07:46:17', '0000-00-00 00:00:00'),
-(516, 'Seksi Rekonstruksi', 514, 0, '2018-09-17 07:46:45', '0000-00-00 00:00:00');
+INSERT INTO `master_unit_kerja` (`id`, `id_eselon`, `unit_kerja`, `parent`, `status_madya`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Sekretariat Daerah', 0, 1, '2021-11-20 16:45:49', '2021-11-20 16:45:49'),
+(3, 2, 'Dinas Pendidikan', 1, 0, '2021-11-20 17:08:15', '2021-11-20 17:08:15'),
+(4, 3, 'Bidang Paud dan Pendidikan Non Formal', 3, 0, '2021-11-20 19:15:20', '2021-11-20 19:15:20');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `master_upaya_fisik`
+-- Table structure for table `master_unit_kerja_old`
+--
+
+CREATE TABLE `master_unit_kerja_old` (
+  `id` int(11) NOT NULL,
+  `id_eselon` int(11) NOT NULL DEFAULT 0,
+  `unit_kerja` varchar(200) NOT NULL,
+  `parent` int(11) NOT NULL,
+  `status_madya` int(11) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `master_unit_kerja_old`
+--
+
+INSERT INTO `master_unit_kerja_old` (`id`, `id_eselon`, `unit_kerja`, `parent`, `status_madya`, `created_at`, `updated_at`) VALUES
+(3, 0, 'Camat Batang Merangin', 186, 0, '2018-09-27 06:35:23', '2018-09-27 06:35:23'),
+(4, 0, 'Inspektorat', 186, 0, '2018-09-27 06:35:03', '2018-09-27 06:35:03'),
+(5, 0, 'Dinas Pendidikan', 186, 0, '2018-09-27 06:51:03', '2018-09-18 04:51:35'),
+(6, 0, 'Dinas Lingkungan Hidup', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:14:25'),
+(7, 0, 'Dinas Pariwisata, Kebudayaan, Pemuda dan Olahraga', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:14:46'),
+(8, 0, 'Dinas Koperasi, Perindustrian dan Perdagangan', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:14:59'),
+(9, 0, 'Dinas Tanaman Pangan dan Holtikultura', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:15:09'),
+(10, 0, 'Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Tenaga Kerja', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:15:20'),
+(11, 0, 'Dinas Pemberdayaan Masyarakat dan Pemerintahan Desa', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:15:30'),
+(12, 0, 'Dinas Kependudukan dan Catatan Sipil', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:15:41'),
+(13, 0, 'Dinas Perikanan', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:15:58'),
+(14, 0, 'Dinas Perkebunan dan Peternakan ', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:16:08'),
+(15, 0, 'Dinas Ketahanan Pangan', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:16:19'),
+(16, 0, 'Dinas Pengendalian Penduduk, Keluarga Berencana, Pemberdayaan Perempuan dan Perlindungan Anak', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:16:30'),
+(17, 0, 'Dinas Sosial', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:16:55'),
+(18, 0, 'Dinas Pekerjaan Umum dan Perumahan Rakyat', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:17:08'),
+(19, 0, 'Dinas Kesehatan', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:17:33'),
+(20, 0, 'Satuan Polisi Pamong Praja dan Pemadam Kebakaran', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:17:43'),
+(21, 0, 'Badan Perencanaan, Pembangunan, Penelitian dan Pengembangan Daerah', 186, 0, '2018-09-27 06:51:52', '2018-09-18 05:17:59'),
+(22, 0, 'Badan Kepegawaian dan Pengembangan Sumber Daya Daerah', 78, 0, '2018-09-26 04:45:19', '2018-09-26 04:45:19'),
+(23, 0, 'Badan Pengelola Pajak dan Retribusi Daerah', 186, 0, '2018-09-27 06:35:40', '2018-09-27 06:35:40'),
+(24, 0, 'Badan Pengelola Keuangan dan Aset Daerah', 186, 0, '2018-09-27 06:35:57', '2018-09-27 06:35:57'),
+(26, 0, 'Badan Penanggulangan Bencana Daerah', 186, 0, '2018-09-27 06:49:22', '2018-09-27 06:49:22'),
+(31, 0, 'Asisten Pemerintahan dan Kesra', 186, 0, '2018-09-02 10:23:00', '2018-09-02 10:23:00'),
+(32, 0, 'Bagian Tata Pemerintahan', 31, 0, '2018-09-01 07:06:22', '2018-09-01 07:06:22'),
+(33, 0, 'Bagian Hukum', 31, 0, '2018-09-01 04:35:28', '0000-00-00 00:00:00'),
+(34, 0, 'Bagian Humas dan Protokol', 31, 0, '2018-09-01 04:45:41', '2018-09-01 04:45:41'),
+(35, 0, 'Bagian Kesra', 31, 0, '2018-09-01 07:07:29', '2018-09-01 07:07:29'),
+(36, 0, 'Asisten Perekonomian dan Pembangunan', 186, 0, '2018-09-02 10:37:40', '2018-09-02 10:37:40'),
+(37, 0, 'Bagian Ekobang dan ULP', 36, 0, '2018-09-01 04:37:12', '0000-00-00 00:00:00'),
+(38, 0, 'Bagian Kominfo', 36, 0, '2018-09-01 04:37:36', '0000-00-00 00:00:00'),
+(39, 0, 'Bagian Perpustakaan dan Kearsipan', 36, 0, '2018-09-01 04:38:01', '0000-00-00 00:00:00'),
+(40, 0, 'Asisten Administrasi Umum', 186, 0, '2018-09-02 10:24:30', '2018-09-02 10:24:30'),
+(41, 0, 'Bagian Umum', 40, 0, '2018-09-01 04:38:39', '0000-00-00 00:00:00'),
+(42, 0, 'Bagian Organisasi ', 40, 0, '2018-09-01 04:38:53', '0000-00-00 00:00:00'),
+(43, 0, 'Bagian Keuangan', 40, 0, '2018-09-01 04:39:11', '0000-00-00 00:00:00'),
+(44, 0, 'Subbagian Pemerintahan Umum', 32, 0, '2018-09-01 04:40:11', '0000-00-00 00:00:00'),
+(45, 0, 'Subbagian Pertanahan dan Batas Daerah/Wilayah', 32, 0, '2018-09-01 04:40:46', '0000-00-00 00:00:00'),
+(46, 0, 'Subbagian Bina Kecamatan dan Kelurahan', 32, 0, '2018-09-01 05:04:18', '2018-09-01 05:04:18'),
+(47, 0, 'Subbagian Peraturan dan Perundang-undangan', 33, 0, '2018-09-01 04:41:48', '0000-00-00 00:00:00'),
+(48, 0, 'Subbagian Bantuan Hukum', 33, 0, '2018-09-01 04:42:38', '0000-00-00 00:00:00'),
+(49, 0, 'Subbagian Pengkajian dan Dokumentasi Hukum', 33, 0, '2018-09-01 04:43:04', '0000-00-00 00:00:00'),
+(50, 0, 'Subbagian Dokumentasi dan Publikasi', 34, 0, '2018-09-01 04:43:38', '0000-00-00 00:00:00'),
+(51, 0, 'Subbagian Pelayanan Media Centre, Cetak, dan Elektronik', 34, 0, '2018-09-01 04:48:26', '0000-00-00 00:00:00'),
+(52, 0, 'Subbagian Protokol', 34, 0, '2018-09-01 04:48:47', '0000-00-00 00:00:00'),
+(53, 0, 'Subbagian Pendidikan dan Mental Spiritual', 35, 0, '2018-09-01 04:49:23', '0000-00-00 00:00:00'),
+(54, 0, 'Subbagian Kesehatan Sosial', 35, 0, '2018-09-01 04:49:43', '0000-00-00 00:00:00'),
+(55, 0, 'Subbagian Kemasyarakatan', 35, 0, '2018-09-01 04:50:02', '0000-00-00 00:00:00'),
+(56, 0, 'Subbagian Perekonomian', 37, 0, '2018-09-01 04:50:49', '0000-00-00 00:00:00'),
+(57, 0, 'Subbagian Pembangunan', 37, 0, '2018-09-01 04:51:13', '0000-00-00 00:00:00'),
+(58, 0, 'Subbagian ULP', 37, 0, '2018-09-01 04:52:06', '0000-00-00 00:00:00'),
+(59, 0, 'Subbagian Sarana dan E-Government', 38, 0, '2018-09-01 04:52:43', '0000-00-00 00:00:00'),
+(60, 0, 'Subbagian Aplikasi dan Informatika', 38, 0, '2018-09-01 04:53:11', '0000-00-00 00:00:00'),
+(61, 0, 'Subbagian Diseminasi Informasi dan Persandian', 38, 0, '2018-09-01 04:53:45', '0000-00-00 00:00:00'),
+(62, 0, 'Subbagian Pembinaan dan Pengembangan ', 39, 0, '2018-09-01 04:54:19', '0000-00-00 00:00:00'),
+(63, 0, 'Subbagian Perpustakaan', 39, 0, '2018-09-01 04:54:46', '0000-00-00 00:00:00'),
+(64, 0, 'Subbagian Kearsipan', 39, 0, '2018-09-01 04:55:12', '0000-00-00 00:00:00'),
+(65, 0, 'Subbagian Tata Usaha', 41, 0, '2018-09-01 04:56:34', '0000-00-00 00:00:00'),
+(66, 0, 'Subbagian Rumah Tangga', 41, 0, '2018-09-01 04:56:54', '0000-00-00 00:00:00'),
+(67, 0, 'Subbagian Perlengkapan', 41, 0, '2018-09-01 04:57:10', '0000-00-00 00:00:00'),
+(68, 0, 'Subbagian Kelembagaan dan RB', 42, 0, '2018-09-01 04:57:49', '0000-00-00 00:00:00'),
+(69, 0, 'Subbagian Ketatalaksanaan, Pelayanan Publik, Akuntabilitas Kinerja', 42, 0, '2018-09-01 04:59:05', '0000-00-00 00:00:00'),
+(70, 0, 'Subbagian Kepegawaian dan Analisis Jabatan', 42, 0, '2018-09-02 10:27:26', '2018-09-02 10:27:26'),
+(71, 0, 'Subbagian Perencanaan', 43, 0, '2018-09-01 04:59:54', '0000-00-00 00:00:00'),
+(72, 0, 'Penatausahaan Keuangan', 43, 0, '2018-09-01 05:00:17', '0000-00-00 00:00:00'),
+(73, 0, 'Subbagian Evaluasi dan Pelaporan', 43, 0, '2018-09-01 05:00:47', '0000-00-00 00:00:00'),
+(74, 0, 'Sekretariat', 23, 0, '2018-09-01 05:07:40', '0000-00-00 00:00:00'),
+(75, 0, 'Subbagian Umum dan Kepegawaian', 74, 0, '2018-09-01 05:08:09', '0000-00-00 00:00:00'),
+(76, 0, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 74, 0, '2018-09-01 05:08:52', '0000-00-00 00:00:00'),
+(77, 0, 'Bidang Pendataan, Penetapan dan Penagihan', 23, 0, '2018-09-01 05:10:01', '0000-00-00 00:00:00'),
+(78, 0, 'Subbidang Pendaftaran dan Pendataan', 77, 0, '2018-09-01 05:10:35', '0000-00-00 00:00:00'),
+(79, 0, 'Subbidang Pengolahan dan Penetapan', 77, 0, '2018-09-01 05:11:02', '0000-00-00 00:00:00'),
+(80, 0, 'Subbidang Pengolahan Data Penetapan', 77, 0, '2018-09-01 05:11:47', '0000-00-00 00:00:00'),
+(81, 0, 'Subbidang Penagihan dan Keberatan', 77, 0, '2018-09-01 05:12:17', '0000-00-00 00:00:00'),
+(82, 0, 'Bidang Pengendalian dan Pelaporan', 23, 0, '2018-09-01 05:12:48', '0000-00-00 00:00:00'),
+(83, 0, 'Subbidang Perencanaan dan Pengembangan Potensi', 82, 0, '2018-09-01 05:13:20', '0000-00-00 00:00:00'),
+(84, 0, 'Subbidang Pengendalian, Evaluasi dan Pelaporan', 82, 0, '2018-09-01 05:14:02', '0000-00-00 00:00:00'),
+(85, 0, 'Subbidang Pengendalian Surat Berharga', 82, 0, '2018-09-01 05:15:10', '0000-00-00 00:00:00'),
+(86, 0, 'Sekretariat', 24, 0, '2018-09-01 05:16:54', '0000-00-00 00:00:00'),
+(87, 0, 'Subbagian Umum dan Kepegawaian', 86, 0, '2018-09-01 05:17:27', '0000-00-00 00:00:00'),
+(88, 0, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 86, 0, '2018-09-13 03:52:26', '2018-09-13 03:52:26'),
+(89, 0, 'Bidang Anggaran', 24, 0, '2018-09-01 05:18:09', '0000-00-00 00:00:00'),
+(90, 0, 'Subbidang Anggaran Belanja Langsung', 89, 0, '2018-09-01 05:18:37', '0000-00-00 00:00:00'),
+(91, 0, 'Subbidang Belanja Tidak Langsung', 89, 0, '2018-09-01 05:19:02', '0000-00-00 00:00:00'),
+(92, 0, 'Subbidang Tuntutan Ganti Rugi dan Regulasi Keuangan Daerah', 89, 0, '2018-09-01 05:19:45', '0000-00-00 00:00:00'),
+(93, 0, 'Bidang Perbendaharaan dan Akuntansi', 24, 0, '2018-09-01 05:20:44', '0000-00-00 00:00:00'),
+(94, 0, 'Subbidang Belanja dan Pembiyaan', 93, 0, '2018-09-01 05:25:38', '0000-00-00 00:00:00'),
+(95, 0, 'Subbidang Akuntansi dan Pembukuan', 93, 0, '2018-09-01 05:26:07', '0000-00-00 00:00:00'),
+(96, 0, 'Subbidang Pencataan dan Rekonsiliasi', 93, 0, '2018-09-01 05:26:48', '0000-00-00 00:00:00'),
+(97, 0, 'Bidang Asset', 24, 0, '2018-09-01 05:27:05', '0000-00-00 00:00:00'),
+(98, 0, 'Subbidang Perencanaan dan Pelaporan', 97, 0, '2018-09-01 05:27:39', '0000-00-00 00:00:00'),
+(99, 0, 'Subbidang Pengawasan dan Pengendalian Pemanfaatan', 97, 0, '2018-09-01 05:28:04', '0000-00-00 00:00:00'),
+(100, 0, 'Subbidang Inventarisasi dan Penghapusan', 97, 0, '2018-09-01 05:28:30', '0000-00-00 00:00:00'),
+(101, 0, 'Sekretariat', 11, 0, '2018-09-01 05:58:29', '0000-00-00 00:00:00'),
+(102, 0, 'Subbagian Umum dan Kepegawaian', 101, 0, '2018-09-01 05:58:50', '0000-00-00 00:00:00'),
+(103, 0, 'Perencanaan Keuangan dan Pelaporan', 101, 0, '2018-09-01 05:59:08', '0000-00-00 00:00:00'),
+(104, 0, 'Bidang Pemberdayaan Masyarakat', 11, 0, '2018-09-01 05:59:48', '0000-00-00 00:00:00'),
+(105, 0, 'Subbidang Bina Pengembangan Kawasan Pedesaan', 104, 0, '2018-09-01 06:00:18', '0000-00-00 00:00:00'),
+(106, 0, 'Subbidang Bina Perekonomian Desa', 104, 0, '2018-09-01 06:00:40', '0000-00-00 00:00:00'),
+(107, 0, 'Subbidang Bina Sosial Budaya Desa', 104, 0, '2018-09-01 06:01:03', '0000-00-00 00:00:00'),
+(108, 0, 'Bidang Pemerintahan Desa', 11, 0, '2018-09-01 06:01:22', '0000-00-00 00:00:00'),
+(109, 0, 'Subbidang Bina Kelembagaan Pemdes', 108, 0, '2018-09-01 06:02:09', '0000-00-00 00:00:00'),
+(110, 0, 'Subbidang Bina Aparatur Desa', 108, 0, '2018-09-01 06:02:46', '0000-00-00 00:00:00'),
+(111, 0, 'Subbidang Bina Administrasi Desa', 108, 0, '2018-09-01 06:03:08', '0000-00-00 00:00:00'),
+(112, 0, 'Bidang Keuangan dan Aset Desa', 11, 0, '2018-09-01 06:03:36', '0000-00-00 00:00:00'),
+(113, 0, 'Subbidang Bina Keuangan Desa', 112, 0, '2018-09-01 06:04:39', '2018-09-01 06:04:39'),
+(114, 0, 'Subbidang Bina Aset Desa', 112, 0, '2018-09-01 06:05:07', '0000-00-00 00:00:00'),
+(115, 0, 'Subbidang Bina Pendapatan dan BUM Desa', 112, 0, '2018-09-01 06:05:39', '0000-00-00 00:00:00'),
+(116, 0, 'Sekretariat', 10, 0, '2018-09-01 06:06:41', '0000-00-00 00:00:00'),
+(117, 0, 'Subbagian Umum dan Kepegawaian', 116, 0, '2018-09-01 06:06:52', '0000-00-00 00:00:00'),
+(118, 0, 'Perencanaan Keuangan dan Pelaporan', 116, 0, '2018-09-01 06:07:06', '0000-00-00 00:00:00'),
+(119, 0, 'Bidang Penanaman Modal', 10, 0, '2018-09-01 06:12:06', '0000-00-00 00:00:00'),
+(120, 0, 'Seksi Perencanaan dan Promosi', 119, 0, '2018-09-01 06:12:45', '0000-00-00 00:00:00'),
+(121, 0, 'Seksi Kerja Sama dan Pengawasan', 119, 0, '2018-09-01 06:13:16', '0000-00-00 00:00:00'),
+(122, 0, 'UPTD Loka Latihan Kerja', 10, 0, '2018-09-01 06:14:07', '0000-00-00 00:00:00'),
+(123, 0, 'Bidang Perizinan dan Non Perizinan', 10, 0, '2018-09-01 06:14:42', '0000-00-00 00:00:00'),
+(126, 0, 'Seksi Pengolahan dan Penerbitan Perizinan dan Non Perizinan', 123, 0, '2018-09-01 06:18:47', '2018-09-01 06:18:47'),
+(130, 0, 'Seksi Data, Informasi dan Dokumentasi', 123, 0, '2018-09-01 06:15:27', '0000-00-00 00:00:00'),
+(131, 0, 'Seksi Pelayanan Umum dan Pengaduan', 123, 0, '2018-09-01 06:17:36', '0000-00-00 00:00:00'),
+(132, 0, 'Bidang Ketenagakerjaan', 10, 0, '2018-09-01 06:19:30', '0000-00-00 00:00:00'),
+(133, 0, 'Seksi Pelatihan dan Peningkatan Produktivitas dan Tenaga Kerja', 132, 0, '2018-09-01 06:20:17', '0000-00-00 00:00:00'),
+(134, 0, 'Seksi Penempatan dan Perluasan Kesempatan Kerja', 132, 0, '2018-09-01 06:20:45', '0000-00-00 00:00:00'),
+(135, 0, 'Seksi Pengawasan dan Hubungan Indutrial', 132, 0, '2018-09-01 06:21:11', '0000-00-00 00:00:00'),
+(136, 0, 'Sekretariat', 14, 0, '2018-09-01 06:27:29', '0000-00-00 00:00:00'),
+(137, 0, 'Subbagian Umum dan Kepegawaian', 136, 0, '2018-09-01 06:27:56', '0000-00-00 00:00:00'),
+(138, 0, 'Subbagian Program Perencanaan, Evaluasi dan Pelaporan', 136, 0, '2018-09-01 06:28:38', '0000-00-00 00:00:00'),
+(139, 0, 'Bidang Perkebunan', 14, 0, '2018-09-03 07:52:10', '2018-09-03 07:52:10'),
+(140, 0, 'Seksi Pembenihan dan Perlindungan ', 139, 0, '2018-09-03 07:54:50', '2018-09-03 07:54:50'),
+(144, 0, 'Bidang Sarana, Prasarana dan Penyuluhan', 14, 0, '2018-09-03 07:48:39', '2018-09-03 07:48:39'),
+(145, 0, 'Seksi Lahan, Pengairan dan pembiyaan', 144, 0, '2018-09-03 07:49:51', '2018-09-03 07:49:51'),
+(146, 0, 'Seksi Pupuk, Pestisida dan Alsintan', 144, 0, '2018-09-03 07:50:47', '2018-09-03 07:50:47'),
+(147, 0, 'Seksi Penyuluhan', 144, 0, '2018-09-03 07:51:22', '2018-09-03 07:51:22'),
+(148, 0, 'Bidang Peternakan dan Kesehatan Hewan', 14, 0, '2018-09-04 06:49:50', '2018-09-04 06:49:50'),
+(153, 0, 'Sekretariat', 18, 0, '2018-09-01 07:12:52', '0000-00-00 00:00:00'),
+(154, 0, 'Subbagian Umum dan Kepegawaian', 153, 0, '2018-09-01 07:13:08', '0000-00-00 00:00:00'),
+(155, 0, 'Subbagian Perencanaan, Evaluasi dan Pelaporan', 153, 0, '2018-09-01 07:14:19', '0000-00-00 00:00:00'),
+(156, 0, 'Subbagian Keuangan dan BMD', 153, 0, '2018-09-01 07:14:38', '0000-00-00 00:00:00'),
+(157, 0, 'Bidang Tata Ruang', 18, 0, '2018-09-01 07:15:01', '0000-00-00 00:00:00'),
+(158, 0, 'Seksi Perencanaan Tata Ruang', 157, 0, '2018-09-01 07:15:39', '0000-00-00 00:00:00'),
+(159, 0, 'Seksi Pemanfaatan Tata Ruang', 157, 0, '2018-09-01 07:16:10', '0000-00-00 00:00:00'),
+(160, 0, 'Seksi Pengendalian Tata Ruang', 157, 0, '2018-09-01 07:16:36', '0000-00-00 00:00:00'),
+(161, 0, 'Bidang Sumber daya Air', 18, 0, '2018-09-01 07:20:27', '0000-00-00 00:00:00'),
+(162, 0, 'Perencanaan ', 161, 0, '2018-09-01 07:20:50', '0000-00-00 00:00:00'),
+(163, 0, 'Pelaksanaan dan Pengawasan', 161, 0, '2018-09-01 07:21:12', '0000-00-00 00:00:00'),
+(164, 0, 'Operasional dan Pemeliharaan', 161, 0, '2018-09-01 07:21:34', '0000-00-00 00:00:00'),
+(165, 0, 'Bidang Bina Marga', 18, 0, '2018-09-01 07:21:54', '0000-00-00 00:00:00'),
+(166, 0, 'Perencanaan ', 165, 0, '2018-09-01 07:22:21', '0000-00-00 00:00:00'),
+(167, 0, 'Pelaksanaan dan Pengawasan', 165, 0, '2018-09-01 07:22:43', '0000-00-00 00:00:00'),
+(168, 0, 'Operasional Pemeliharaan Jalan dan Jembatan', 165, 0, '2018-09-01 07:23:11', '0000-00-00 00:00:00'),
+(169, 0, 'Bidang Cipta Karya', 18, 0, '2018-09-01 07:23:28', '0000-00-00 00:00:00'),
+(170, 0, 'Seksi tata Bangunan dan Lingkungan', 169, 0, '2018-09-01 07:23:49', '0000-00-00 00:00:00'),
+(171, 0, 'Seksi Penyehatan Lingkungan dan sanitasi', 169, 0, '2018-09-01 07:24:21', '2018-09-01 07:24:21'),
+(172, 0, 'Seksi Pengembangan Perumahan dan Kawasan Permukiman', 169, 0, '2018-09-01 07:24:56', '0000-00-00 00:00:00'),
+(173, 0, 'Bidang Tanggap Darurat dan Jasa Konstruksi', 18, 0, '2018-09-01 07:58:08', '2018-09-01 07:58:08'),
+(174, 0, 'UPTD Peralatan dan Perbengkelan', 18, 0, '2018-09-01 07:26:52', '0000-00-00 00:00:00'),
+(175, 0, 'Seksi Tanggap Darurat dan Pasca Bencana', 173, 0, '2018-09-02 06:46:21', '2018-09-02 06:46:21'),
+(176, 0, 'Seksi Pengawasan dan Pengendalian  Mutu', 173, 0, '2018-09-02 06:47:42', '0000-00-00 00:00:00'),
+(177, 0, 'Seksi Bina Jasa Konstruksi', 173, 0, '2018-09-02 06:48:23', '0000-00-00 00:00:00'),
+(178, 0, 'Sekretariat', 21, 0, '2018-09-02 06:49:15', '0000-00-00 00:00:00'),
+(179, 0, 'Subbagian Umum dan Kepegawaian', 178, 0, '2018-09-02 06:50:11', '2018-09-02 06:50:11'),
+(180, 0, 'Subbagian Perencanaan, Evaluasi dan Pelaporan', 178, 0, '2018-09-02 06:51:08', '0000-00-00 00:00:00'),
+(181, 0, 'Subbagian Keuangan dan BMD', 178, 0, '2018-09-02 06:51:51', '0000-00-00 00:00:00'),
+(182, 0, 'Bidang Pengembangan Sistem Perencanaan', 21, 0, '2018-09-02 06:52:22', '0000-00-00 00:00:00'),
+(183, 0, 'Subbidang Pengembangan Sistem Perencanaan', 182, 0, '2018-09-02 06:53:08', '0000-00-00 00:00:00'),
+(184, 0, 'Subbidang Dokumen Perencanaan', 182, 0, '2018-09-02 06:53:49', '0000-00-00 00:00:00'),
+(186, 0, 'Sekretariat Daerah', 0, 1, '2018-09-27 06:54:05', '2018-09-27 06:54:05'),
+(187, 0, 'Bidang Penelitian dan Pengembangan', 21, 0, '2018-09-02 14:28:00', '0000-00-00 00:00:00'),
+(188, 0, 'Subbidang Perencanaan Anggaran', 182, 0, '2018-09-02 14:28:59', '0000-00-00 00:00:00'),
+(189, 0, 'Subbidang Litbang, Sosial dan Pemerintahan', 187, 0, '2018-09-02 14:29:54', '0000-00-00 00:00:00'),
+(190, 0, 'Subbidang Litbang Ekonomi, SDA dan Inovasi Teknologi', 187, 0, '2018-09-02 14:31:26', '0000-00-00 00:00:00'),
+(191, 0, 'Subbidang Monitoring, Pengendalian dan Evaluasi', 187, 0, '2018-09-02 14:32:42', '2018-09-02 14:32:42'),
+(192, 0, 'Bidang Ekonomi, Sosial dan Budaya', 21, 0, '2018-09-02 14:33:38', '0000-00-00 00:00:00'),
+(193, 0, 'Subbidang Perekonomian', 192, 0, '2018-09-02 14:34:02', '0000-00-00 00:00:00'),
+(194, 0, 'Subbidang Kesra', 192, 0, '2018-09-02 14:34:22', '0000-00-00 00:00:00'),
+(195, 0, 'Subbidang Pemerintahan dan Kebudayaan', 192, 0, '2018-09-02 14:35:01', '0000-00-00 00:00:00'),
+(196, 0, 'Bidang Fisik dan Prasarana', 21, 0, '2018-09-02 14:35:27', '0000-00-00 00:00:00'),
+(197, 0, 'Subbidang Tata Ruang dan Lingkungan Hidup', 196, 0, '2018-09-02 14:35:58', '0000-00-00 00:00:00'),
+(198, 0, 'Subbidang Perhubungan dan Pengairan', 196, 0, '2018-09-02 14:43:36', '0000-00-00 00:00:00'),
+(199, 0, 'Subbidang Perumahan dan Permukiman', 196, 0, '2018-09-02 15:34:57', '0000-00-00 00:00:00'),
+(200, 0, 'Sekretariat', 22, 0, '2018-09-03 06:07:12', '0000-00-00 00:00:00'),
+(201, 0, 'Subbagian Umum dan Kepegawaian', 200, 0, '2018-09-03 06:07:40', '0000-00-00 00:00:00'),
+(202, 0, 'Subbagian Perencanaan Keuangan dan Pelaporan', 200, 0, '2018-09-03 06:08:24', '0000-00-00 00:00:00'),
+(203, 0, 'Bidang Pelayanan Pendataan Pengembangan Karir dan Penilaian Kinerja', 22, 0, '2018-09-03 06:09:42', '0000-00-00 00:00:00'),
+(204, 0, 'Subbidang Pendataan Pegawai', 203, 0, '2018-09-03 06:13:39', '0000-00-00 00:00:00'),
+(205, 0, 'Subbidang Pengembangan Karir', 203, 0, '2018-09-03 06:15:37', '0000-00-00 00:00:00'),
+(206, 0, 'Subbidang Penilaian Kinerja', 203, 0, '2018-09-03 06:16:06', '0000-00-00 00:00:00'),
+(207, 0, 'Bidang Pengadaan, Kepangkatan, Mutasi dan Pensiun ', 22, 0, '2018-09-03 06:22:26', '0000-00-00 00:00:00'),
+(208, 0, 'Subbidang  Kepangkatan', 207, 0, '2018-09-03 06:27:22', '0000-00-00 00:00:00'),
+(209, 0, 'Subbidang Pengadaan dan Pensiun', 207, 0, '2018-09-03 06:27:50', '0000-00-00 00:00:00'),
+(210, 0, 'Subbidang Mutasi', 207, 0, '2018-09-03 06:28:09', '0000-00-00 00:00:00'),
+(211, 0, 'Bidang Disiplin dan Pengembangan Kompetensi Aparatur', 22, 0, '2018-09-03 06:29:05', '0000-00-00 00:00:00'),
+(212, 0, 'Subbidang Disiplin dan Bina Profesi ASN', 211, 0, '2018-09-03 06:30:51', '0000-00-00 00:00:00'),
+(213, 0, 'Subbidang Diklat Teknis, Struktural dan Fungsional', 211, 0, '2018-09-03 06:32:15', '0000-00-00 00:00:00'),
+(214, 0, 'Subbidang Izin dan Cuti', 211, 0, '2018-09-03 06:32:54', '0000-00-00 00:00:00'),
+(215, 0, 'Inspektur  Pembantu  Wilayah II ', 4, 0, '2018-09-03 06:55:09', '2018-09-03 06:55:09'),
+(216, 0, 'Inspektur Pembantu Wilayah I', 4, 0, '2018-09-03 06:54:34', '0000-00-00 00:00:00'),
+(217, 0, 'Inspektur  Pembantu  Wilayah III ', 4, 0, '2018-09-03 06:55:28', '0000-00-00 00:00:00'),
+(218, 0, 'Inspektur  Pembantu  Wilayah IV', 4, 0, '2018-09-03 06:56:15', '0000-00-00 00:00:00'),
+(219, 0, 'Sekretariat', 4, 0, '2018-09-03 06:56:26', '0000-00-00 00:00:00'),
+(220, 0, 'Subbagian Perencanaan', 219, 0, '2018-09-03 06:57:13', '0000-00-00 00:00:00'),
+(221, 0, 'Subbagian Evaluasi dan Pelaporan', 219, 0, '2018-09-03 06:57:51', '0000-00-00 00:00:00'),
+(222, 0, 'Subbagian Administrasi dan Umum', 219, 0, '2018-09-03 06:58:48', '0000-00-00 00:00:00'),
+(223, 0, 'Sekretariat', 19, 0, '2018-09-03 06:59:32', '0000-00-00 00:00:00'),
+(224, 0, 'Subbagian Umum dan Kepegawaian', 223, 0, '2018-09-03 06:59:44', '0000-00-00 00:00:00'),
+(225, 0, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 223, 0, '2018-09-03 07:00:33', '0000-00-00 00:00:00'),
+(226, 0, 'Bidang Kesehatan Masyarakat', 19, 0, '2018-09-03 07:01:46', '0000-00-00 00:00:00'),
+(227, 0, 'Seksi Kesehatan Keluarga dan Gizi', 226, 0, '2018-09-03 07:02:22', '0000-00-00 00:00:00'),
+(228, 0, 'Seksi Promisi dan Pemberdayaan Masyarakat', 226, 0, '2018-09-03 07:03:14', '0000-00-00 00:00:00'),
+(229, 0, 'Seksi Kesehatan Lingkungan, Kesehatan Kerja, dan Olahraga', 226, 0, '2018-09-03 07:05:33', '2018-09-03 07:05:33'),
+(230, 0, 'Bidang Pencegahan dan Pengendalian Penyakit', 19, 0, '2018-09-03 07:08:43', '0000-00-00 00:00:00'),
+(231, 0, 'Seksi Surveilans dan Imunisasi', 230, 0, '2018-09-03 07:09:13', '0000-00-00 00:00:00'),
+(232, 0, 'Seksi Pencegahan dan Pengendalian penyakit Menular', 230, 0, '2018-09-03 07:09:47', '0000-00-00 00:00:00'),
+(233, 0, 'Seksi Pencegahan dan Pengendalian Penyakit tidak Menular serta Kesehatan Jiwa', 230, 0, '2018-09-03 07:10:30', '0000-00-00 00:00:00'),
+(234, 0, 'Bidang Pelayanan dan Sumber Daya Kesehatan', 19, 0, '2018-09-03 07:11:04', '0000-00-00 00:00:00'),
+(235, 0, 'Seksi Pelayanan Kesehatan', 234, 0, '2018-09-03 07:11:34', '0000-00-00 00:00:00'),
+(236, 0, 'Seksi Keparmasian&lt; alkes dan Perbekalan Kesehatan Rumah Tangga (PKRT)', 234, 0, '2018-09-03 07:12:31', '0000-00-00 00:00:00'),
+(237, 0, 'Seksi Sumber Daya manusia Kesehatan', 234, 0, '2018-09-03 07:12:56', '0000-00-00 00:00:00'),
+(238, 0, 'Sekretariat DPRD', 0, 1, '2018-09-27 06:56:15', '2018-09-27 06:56:15'),
+(239, 0, 'Subbagian Tata Usaha dan Kepegawaian', 242, 0, '2018-09-03 07:23:30', '2018-09-03 07:23:30'),
+(240, 0, 'Subbagian Rumah Tangga dan Protokoler Kehumasan', 242, 0, '2018-09-03 07:23:46', '2018-09-03 07:23:46'),
+(241, 0, 'Sekretariat', 238, 0, '2018-09-03 07:21:27', '0000-00-00 00:00:00'),
+(242, 0, 'Bagian Umum', 241, 0, '2018-09-03 07:23:09', '0000-00-00 00:00:00'),
+(243, 0, 'Bagian Risalah dan Perundang-undangan', 241, 0, '2018-09-03 07:24:27', '0000-00-00 00:00:00'),
+(244, 0, 'Subbagian Risalah dan Persidangan', 243, 0, '2018-09-03 07:25:25', '0000-00-00 00:00:00'),
+(245, 0, 'Subbagian Perundang-undangan dan Perpustakaan', 243, 0, '2018-09-03 07:29:33', '0000-00-00 00:00:00'),
+(246, 0, 'Bagian Keuangan', 241, 0, '2018-09-03 07:29:54', '0000-00-00 00:00:00'),
+(247, 0, 'Subbagian Perencanaan dan Anggaran', 246, 0, '2018-09-03 07:30:18', '0000-00-00 00:00:00'),
+(248, 0, 'Subbagian Penatausahaan Keuangan', 246, 0, '2018-09-03 07:31:01', '0000-00-00 00:00:00'),
+(249, 0, 'Sekretariat', 12, 0, '2018-09-03 07:34:52', '0000-00-00 00:00:00'),
+(250, 0, 'Subbagian Umum dan Kepegawaian', 249, 0, '2018-09-03 07:35:07', '0000-00-00 00:00:00'),
+(251, 0, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 249, 0, '2018-09-03 07:35:37', '0000-00-00 00:00:00'),
+(252, 0, 'Bidang Pelayanan Pendaftaran Penduduk', 12, 0, '2018-09-03 07:36:48', '0000-00-00 00:00:00'),
+(253, 0, 'Seksi Identitas Penduduk', 252, 0, '2018-09-03 07:37:25', '0000-00-00 00:00:00'),
+(254, 0, 'Seksi Pindah Datang Penduduk', 252, 0, '2018-09-03 07:38:08', '0000-00-00 00:00:00'),
+(255, 0, 'UPTD Dukcapil', 12, 0, '2018-09-03 07:38:28', '0000-00-00 00:00:00'),
+(256, 0, 'Seksi Penduduk', 252, 0, '2018-09-03 07:39:02', '0000-00-00 00:00:00'),
+(257, 0, 'Bidang Pelayanan Pencatatan Sipil', 12, 0, '2018-09-03 07:39:56', '0000-00-00 00:00:00'),
+(258, 0, 'Seksi Kelahiran', 257, 0, '2018-09-03 07:40:28', '0000-00-00 00:00:00'),
+(259, 0, 'Seksi Perkawinan dan Perceraian', 257, 0, '2018-09-03 07:41:13', '0000-00-00 00:00:00'),
+(260, 0, 'Seksi Perubahan Status Anak, Kewarganegaraan dan Kematian', 257, 0, '2018-09-03 07:43:49', '0000-00-00 00:00:00'),
+(261, 0, 'Bidang Piak dan Pemanfataan Data', 12, 0, '2018-09-03 07:44:20', '0000-00-00 00:00:00'),
+(262, 0, 'Seksi Sistem Informasi Administrasi Kependudukan', 261, 0, '2018-09-03 07:45:12', '0000-00-00 00:00:00'),
+(263, 0, 'Seksi Pengolahan dan Penyajian Data', 261, 0, '2018-09-03 07:45:42', '0000-00-00 00:00:00'),
+(264, 0, 'Seksi Kerja sama dan Inovasi Pelayanan', 261, 0, '2018-09-03 07:46:10', '0000-00-00 00:00:00'),
+(265, 0, 'Seksi Produksi', 139, 0, '2018-09-03 07:55:56', '0000-00-00 00:00:00'),
+(266, 0, 'Seksi Pengolahan dan Pemasaran', 139, 0, '2018-09-04 06:51:22', '0000-00-00 00:00:00'),
+(267, 0, 'Seksi Perbibitan dan Produksi', 148, 0, '2018-09-04 06:52:11', '0000-00-00 00:00:00'),
+(268, 0, 'Seksi Kesehatan Hewan', 148, 0, '2018-09-04 06:52:55', '0000-00-00 00:00:00'),
+(269, 0, 'Seksi Kesmavet, Pengolahan dan Pemasaran', 148, 0, '2018-09-04 06:53:42', '0000-00-00 00:00:00'),
+(270, 0, 'Sekretariat', 15, 0, '2018-09-04 07:05:34', '0000-00-00 00:00:00'),
+(271, 0, 'Subbagian Umum dan Kepegawaian', 270, 0, '2018-09-04 07:16:58', '0000-00-00 00:00:00'),
+(272, 0, 'Subbagian Perencanaan dan Evaluasi', 270, 0, '2018-09-04 07:17:31', '0000-00-00 00:00:00'),
+(273, 0, 'Bidang Ketersedian dan Distribusi Pangan', 15, 0, '2018-09-04 07:18:12', '0000-00-00 00:00:00'),
+(274, 0, 'Seksi Ketersediaan Pangan ', 273, 0, '2018-09-04 07:18:36', '0000-00-00 00:00:00'),
+(275, 0, 'Seksi Distribusi Pangan', 273, 0, '2018-09-04 07:19:03', '0000-00-00 00:00:00'),
+(276, 0, 'Seksi Kerawanan Pangan', 273, 0, '2018-09-04 07:19:25', '0000-00-00 00:00:00'),
+(277, 0, 'Bidang Konsumsi dan Keamanan Pangan', 15, 0, '2018-09-04 07:19:58', '0000-00-00 00:00:00'),
+(278, 0, 'Seksi Konsumsi Pangan', 277, 0, '2018-09-04 07:20:21', '0000-00-00 00:00:00'),
+(279, 0, 'Seksi Penganekaragaman Pangan', 277, 0, '2018-09-04 07:20:51', '0000-00-00 00:00:00'),
+(280, 0, 'Seksi Keamanan Pangan', 277, 0, '2018-09-04 07:21:18', '0000-00-00 00:00:00'),
+(281, 0, 'Sekretariat', 13, 0, '2018-09-04 07:22:11', '0000-00-00 00:00:00'),
+(282, 0, 'Subbagian Perencanaan, Keuangan dan Evaluasi', 281, 0, '2018-09-04 07:26:20', '0000-00-00 00:00:00'),
+(283, 0, 'Subbagian Umum dan Kepegawaian', 281, 0, '2018-09-04 07:26:46', '0000-00-00 00:00:00'),
+(284, 0, 'Bidang Perikanan Budidaya', 13, 0, '2018-09-04 07:30:32', '2018-09-04 07:30:32'),
+(286, 0, 'Seksi Produksi dan Usaha Budidya', 284, 0, '2018-09-04 07:30:13', '0000-00-00 00:00:00'),
+(287, 0, 'Seksi Sarana dan Prasarana Budidya', 284, 0, '2018-09-04 07:32:00', '0000-00-00 00:00:00'),
+(288, 0, 'Seksi Kesehatan Ikan dan Lingkungan Budidaya', 284, 0, '2018-09-27 07:50:03', '2018-09-27 07:50:03'),
+(289, 0, 'Bidang Perikanan Perairan Umum', 13, 0, '2018-09-04 07:34:18', '0000-00-00 00:00:00'),
+(290, 0, 'Seksi Penangkapan', 289, 0, '2018-09-04 07:35:05', '0000-00-00 00:00:00'),
+(291, 0, 'Seksi Penguatan Daya Saing Produk Perikanan', 289, 0, '2018-09-04 07:36:00', '0000-00-00 00:00:00'),
+(292, 0, 'Seksi Pengawasan Sumber Daya Perikanan', 289, 0, '2018-09-04 07:36:38', '0000-00-00 00:00:00'),
+(293, 0, 'Sekretariat', 20, 0, '2018-09-04 07:41:28', '0000-00-00 00:00:00'),
+(294, 0, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 293, 0, '2018-09-05 03:52:52', '0000-00-00 00:00:00'),
+(295, 0, 'Bidang Penegakan Peraturan Daerah', 20, 0, '2018-09-05 03:53:48', '0000-00-00 00:00:00'),
+(296, 0, 'Seksi Pemeriksaan dan Penindakan', 295, 0, '2018-09-05 03:54:46', '0000-00-00 00:00:00'),
+(297, 0, 'Seksi Pengawasan dan Pembinaan', 295, 0, '2018-09-05 03:55:49', '0000-00-00 00:00:00'),
+(298, 0, 'Bidang Trantib Linmas', 20, 0, '2018-09-05 03:56:54', '0000-00-00 00:00:00'),
+(299, 0, 'Seksi Trantib', 298, 0, '2018-09-05 03:57:52', '0000-00-00 00:00:00'),
+(300, 0, 'Seksi Perlindungan Masyarakat', 298, 0, '2018-09-05 03:58:43', '0000-00-00 00:00:00'),
+(301, 0, 'Bidang Pemadam Kebakaran', 20, 0, '2018-09-05 03:59:15', '0000-00-00 00:00:00'),
+(302, 0, 'Seksi Pencegahan dan Penanggulangan Kebakaran', 301, 0, '2018-09-05 03:59:58', '0000-00-00 00:00:00'),
+(303, 0, 'Seksi Sarana dan Prasarana Kebakaran', 301, 0, '2018-09-05 04:00:47', '0000-00-00 00:00:00'),
+(304, 0, 'Pos Kecamatan', 301, 0, '2018-09-05 04:01:26', '0000-00-00 00:00:00'),
+(305, 0, 'Sekretariat', 9, 0, '2018-09-05 04:04:13', '0000-00-00 00:00:00'),
+(306, 0, 'Subbagian Umum dan Kepegawaian', 305, 0, '2018-09-05 04:04:23', '0000-00-00 00:00:00'),
+(308, 0, 'Subbagian Perencanaan dan Keuangan ', 305, 0, '2018-09-05 04:05:12', '0000-00-00 00:00:00'),
+(309, 0, 'Bidang Tanaman Pangan', 9, 0, '2018-09-05 04:11:38', '0000-00-00 00:00:00'),
+(310, 0, 'Seksi Perbenihan dan Perlindungan', 309, 0, '2018-09-05 04:12:19', '0000-00-00 00:00:00'),
+(311, 0, 'Seksi Produksi', 309, 0, '2018-09-05 04:13:58', '0000-00-00 00:00:00'),
+(312, 0, 'Seksi Pengolahan dan Pemasaran ', 309, 0, '2018-09-05 04:14:42', '0000-00-00 00:00:00'),
+(313, 0, 'Bidang Holtikultura', 309, 0, '2018-09-05 04:15:14', '0000-00-00 00:00:00'),
+(314, 0, 'Seksi Perbenihan dan Perlindungan ', 313, 0, '2018-09-05 04:15:50', '0000-00-00 00:00:00'),
+(315, 0, 'Seksi Pengolahan dan Pemasaran', 313, 0, '2018-09-05 04:17:32', '0000-00-00 00:00:00'),
+(316, 0, 'Seksi Produksi', 313, 0, '2018-09-05 04:17:58', '0000-00-00 00:00:00'),
+(317, 0, 'Bidang PSP dan Penyuluhan', 9, 0, '2018-09-05 04:18:36', '0000-00-00 00:00:00'),
+(318, 0, 'Seksi Lahan, Irigasi dan Pembiayaan', 317, 0, '2018-09-05 04:19:02', '0000-00-00 00:00:00'),
+(319, 0, 'Seksi Pupuk, Pestisida dan Pengelolaan Air', 317, 0, '2018-09-05 04:19:30', '0000-00-00 00:00:00'),
+(320, 0, 'Seksi Penyuluhan', 316, 0, '2018-09-05 04:20:31', '0000-00-00 00:00:00'),
+(321, 0, 'Sekretariat', 17, 0, '2018-09-05 04:28:02', '0000-00-00 00:00:00'),
+(322, 0, 'Kepala Sub bagian Umum dan Kepegawaian Dinas Sosial', 321, 0, '2018-09-19 03:27:30', '2018-09-19 03:27:30'),
+(323, 0, 'Kepala Sub bagian Perencanaan, Keuangan dan Pelaporan Dinas Sosial', 321, 0, '2018-09-19 03:28:30', '2018-09-19 03:28:30'),
+(324, 0, 'Bidang Perlindungan dan Jaminan Sosial', 17, 0, '2018-09-05 04:30:26', '0000-00-00 00:00:00'),
+(325, 0, 'Seksi Perlindungan Sosial Korban Bencana Alam', 324, 0, '2018-09-05 04:31:05', '0000-00-00 00:00:00'),
+(326, 0, 'Seksi Perlindungan Sosial Korban Bencana Sosial dan Orang Terlantar', 324, 0, '2018-09-05 04:31:59', '0000-00-00 00:00:00'),
+(327, 0, 'Seksi Jaminan Sosial Keluarga', 324, 0, '2018-09-05 04:32:39', '0000-00-00 00:00:00'),
+(328, 0, 'Bidang Rehabilitasi Sosial', 17, 0, '2018-09-05 04:33:07', '0000-00-00 00:00:00'),
+(329, 0, 'Seksi Rehabilitasi Sosial Anak dan lanjut Usia', 328, 0, '2018-09-05 04:37:12', '0000-00-00 00:00:00'),
+(330, 0, 'Seksi Rehabilitasi Sosial Penyandang Disabilitas', 328, 0, '2018-09-05 04:37:51', '0000-00-00 00:00:00'),
+(331, 0, 'Seksi Rehabilitasi Sosial Tuna Sosial, Korban Penyalahgunaan Napza dan Perdagangan Orang', 328, 0, '2018-09-05 04:38:44', '0000-00-00 00:00:00'),
+(332, 0, 'Bidang Pemberdayaan Sosial dan Penanganan Fakir Miskin', 17, 0, '2018-09-05 04:51:11', '2018-09-05 04:51:11'),
+(333, 0, 'Seksi Penanganan Fakir Miskin Pedesaan dan Perkotaan', 332, 0, '2018-09-05 05:01:22', '0000-00-00 00:00:00'),
+(334, 0, 'Seksi Kelembagaan', 332, 0, '2018-09-05 05:01:44', '0000-00-00 00:00:00'),
+(335, 0, 'Seksi Kepahlawanan, Keperintisan dan Kesetiakawanan Sosial', 332, 0, '2018-09-05 05:02:26', '0000-00-00 00:00:00'),
+(336, 0, 'Sekretariat', 6, 0, '2018-09-05 05:02:53', '0000-00-00 00:00:00'),
+(337, 0, 'Subbagian Umum dan Kepegawaian', 336, 0, '2018-09-05 05:03:04', '0000-00-00 00:00:00'),
+(338, 0, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 336, 0, '2018-09-05 05:03:16', '0000-00-00 00:00:00'),
+(339, 0, 'Bidang Perlindungan SDA dan Peningkatan Kapasitas Lingkungan', 6, 0, '2018-09-05 05:03:49', '0000-00-00 00:00:00'),
+(340, 0, 'Seksi Konservasi SDA dan Pertamanan', 339, 0, '2018-09-05 05:04:21', '0000-00-00 00:00:00'),
+(341, 0, 'Seksi Mitigasi Adaptasi Perubahan Iklim', 339, 0, '2018-09-05 05:04:49', '0000-00-00 00:00:00'),
+(342, 0, 'Seksi Peningkatan Kapasitas Lingkungan', 339, 0, '2018-09-05 05:05:12', '0000-00-00 00:00:00'),
+(343, 0, 'Bidang Pengendalian dan Penataan Hukum Lingkungan ', 6, 0, '2018-09-05 05:06:22', '0000-00-00 00:00:00'),
+(344, 0, 'Seksi Perencanaan dan Kajian Dampak Lingkungan', 343, 0, '2018-09-05 05:06:45', '0000-00-00 00:00:00'),
+(345, 0, 'Seksi Pemantauan dan pengawasan Lingkungan', 343, 0, '2018-09-05 05:07:14', '0000-00-00 00:00:00'),
+(346, 0, 'Seksi Pengaduan dan Penataan Hukum Lingkungan', 343, 0, '2018-09-05 05:09:32', '0000-00-00 00:00:00'),
+(347, 0, 'Bidang Persampahan dan Limbah', 6, 0, '2018-09-05 05:11:23', '0000-00-00 00:00:00'),
+(348, 0, 'Seksi Pengelolaan Persampahan', 347, 0, '2018-09-05 05:13:16', '0000-00-00 00:00:00'),
+(349, 0, 'Seksi Pengelolaan Limbah', 347, 0, '2018-09-05 05:13:46', '2018-09-05 05:13:46'),
+(350, 0, 'Seksi Sarana Prasarana Sampah dan Limbah', 347, 0, '2018-09-05 05:15:06', '0000-00-00 00:00:00'),
+(351, 0, 'Sekretariat', 8, 0, '2018-09-05 05:38:45', '0000-00-00 00:00:00'),
+(352, 0, 'Subbagian Umum dan Kepegawaian', 351, 0, '2018-09-05 05:40:26', '0000-00-00 00:00:00'),
+(353, 0, 'Subbagian Perencanaan, Evaluasi dan Pelaporan', 351, 0, '2018-09-05 05:40:58', '0000-00-00 00:00:00'),
+(354, 0, 'Subbagian Keuangan dan BMD', 351, 0, '2018-09-05 05:41:21', '0000-00-00 00:00:00'),
+(355, 0, 'Bidang Pemberdayaan Koperasi', 8, 0, '2018-09-05 05:41:51', '0000-00-00 00:00:00'),
+(356, 0, 'Seksi Kelembagaan Koperasi', 355, 0, '2018-09-05 05:42:14', '0000-00-00 00:00:00'),
+(357, 0, 'Seksi Pengembangan Usaha, Permodalan dan SDM', 355, 0, '2018-09-05 05:42:48', '0000-00-00 00:00:00'),
+(358, 0, 'Seksi Pembinaan dan Pengawasan', 355, 0, '2018-09-05 05:43:20', '0000-00-00 00:00:00'),
+(359, 0, 'Bidang Pemberdayaan UMKM dan Industri', 8, 0, '2018-09-05 08:01:07', '0000-00-00 00:00:00'),
+(360, 0, 'Seksi Pendataan Kelembagaan UMKM dan Industri', 359, 0, '2018-09-05 08:20:11', '2018-09-05 08:20:11'),
+(361, 0, 'Seksi Pengembangan Usaha dan SDM', 359, 0, '2018-09-05 08:02:34', '0000-00-00 00:00:00'),
+(362, 0, 'Seksi Sarana Industri dan UMKM', 359, 0, '2018-09-05 08:03:31', '0000-00-00 00:00:00'),
+(363, 0, 'Bidang Perdagangan', 8, 0, '2018-09-05 08:04:06', '0000-00-00 00:00:00'),
+(364, 0, 'Seksi Pengembangan Perdagangan', 363, 0, '2018-09-05 08:04:37', '0000-00-00 00:00:00'),
+(365, 0, 'Seksi Promosi dan Pemasaran', 363, 0, '2018-09-05 08:30:39', '0000-00-00 00:00:00'),
+(366, 0, 'Dinas Perhubungan', 186, 0, '2018-09-27 06:48:39', '2018-09-27 06:48:39'),
+(367, 0, 'Bidang Lalu Lintas ', 366, 0, '2018-09-06 06:49:52', '0000-00-00 00:00:00'),
+(368, 0, 'Seksi lalu Lintas', 367, 0, '2018-09-06 06:50:21', '0000-00-00 00:00:00'),
+(369, 0, 'Seksi Angkutan', 367, 0, '2018-09-06 06:50:38', '0000-00-00 00:00:00'),
+(370, 0, 'Seksi Pengujian Sarana', 367, 0, '2018-09-06 06:51:00', '0000-00-00 00:00:00'),
+(371, 0, 'Sekretariat', 366, 0, '2018-09-06 06:51:16', '0000-00-00 00:00:00'),
+(372, 0, 'Subbagian Perencanaan dan Keuangan ', 371, 0, '2018-09-06 06:52:51', '0000-00-00 00:00:00'),
+(373, 0, 'Subbagian Umum dan Kepegawaian', 371, 0, '2018-09-06 06:53:06', '0000-00-00 00:00:00'),
+(374, 0, 'Bidang Prasarana dan Keselamatan', 366, 0, '2018-09-06 06:54:47', '0000-00-00 00:00:00'),
+(375, 0, 'seksi Prasarana', 374, 0, '2018-09-06 06:55:31', '0000-00-00 00:00:00'),
+(376, 0, 'Seksi Pengembangan', 374, 0, '2018-09-06 07:00:58', '0000-00-00 00:00:00'),
+(377, 0, 'Seksi Keselamatan', 374, 0, '2018-09-06 07:01:17', '0000-00-00 00:00:00'),
+(378, 0, 'Sekretariat', 5, 0, '2018-09-06 07:04:46', '0000-00-00 00:00:00'),
+(379, 0, 'Subbagian Umum dan Kepegawaian', 378, 0, '2018-09-06 07:05:21', '0000-00-00 00:00:00'),
+(380, 0, 'Subbagian Keuangan dan BMD', 378, 0, '2018-09-06 07:05:37', '0000-00-00 00:00:00'),
+(381, 0, 'Subbagian Perencanaan, Evaluasi dan Pelaporan', 378, 0, '2018-09-06 07:06:23', '0000-00-00 00:00:00'),
+(382, 0, 'Bidang Paud dan Pendidikan Non Formal', 5, 0, '2018-09-06 07:08:31', '0000-00-00 00:00:00'),
+(383, 0, 'Seksi Pendidikan Anak Usia Dini', 382, 0, '2018-09-06 07:11:54', '0000-00-00 00:00:00'),
+(384, 0, 'Seksi Pendidikan Kesetaraan', 382, 0, '2018-09-06 07:12:47', '0000-00-00 00:00:00'),
+(385, 0, 'Seksi Pendidikan Non Formal', 382, 0, '2018-09-06 07:14:23', '0000-00-00 00:00:00'),
+(386, 0, 'Bidang Pembinaan dan Pendidikan Dasar', 5, 0, '2018-09-06 07:15:04', '2018-09-06 07:15:04'),
+(387, 0, 'Seksi Kurikulum dan Peserta Didik SD', 386, 0, '2018-09-06 07:16:26', '0000-00-00 00:00:00'),
+(388, 0, 'Seksi Kurikulum dan Peserta Didik SMP', 386, 0, '2018-09-06 07:16:52', '0000-00-00 00:00:00'),
+(389, 0, 'Seksi Penjamin Mutu Pendidikan Dasar', 386, 0, '2018-09-06 07:17:26', '0000-00-00 00:00:00'),
+(390, 0, 'Bidang Pembinaan Ketenagaan', 5, 0, '2018-09-06 07:18:04', '0000-00-00 00:00:00'),
+(391, 0, 'Seksi Kesejahteraan Guru dan Tenaga Kependidikan', 390, 0, '2018-09-06 07:26:49', '0000-00-00 00:00:00'),
+(392, 0, 'Seksi Peningkatan SDM Guru dan Tenaga Kependidikan', 390, 0, '2018-09-06 07:31:07', '0000-00-00 00:00:00'),
+(393, 0, 'Seksi Promosi dan Mutasi Guru dan tenaga Kependidikan', 390, 0, '2018-09-06 07:31:47', '0000-00-00 00:00:00'),
+(394, 0, 'Bidang Kelembagaan dan Sarana dan Prasarana', 5, 0, '2018-09-06 07:32:35', '0000-00-00 00:00:00'),
+(395, 0, 'Seksi Kelembagaan dan Sarana Prasarana SD', 394, 0, '2018-09-06 07:33:31', '0000-00-00 00:00:00'),
+(396, 0, 'Seksi Kelembagaan dan Sarana Prasarana SMP', 394, 0, '2018-09-06 07:34:17', '0000-00-00 00:00:00'),
+(397, 0, 'Seksi Kelembagaan dan sarana Prasarana Paud, UPT dan Dinas', 394, 0, '2018-09-06 07:35:48', '0000-00-00 00:00:00'),
+(398, 0, 'Sekretariat', 16, 0, '2018-09-06 07:45:05', '0000-00-00 00:00:00'),
+(399, 0, 'Subbagian Umum dan Kepegawaian', 398, 0, '2018-09-06 07:46:37', '0000-00-00 00:00:00'),
+(400, 0, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 398, 0, '2018-09-06 07:54:51', '0000-00-00 00:00:00'),
+(401, 0, 'Bidang Pengendalian Penduduk, Penyuluhan dan Penggerakan', 16, 0, '2018-09-06 07:55:56', '0000-00-00 00:00:00'),
+(402, 0, 'Seksi Advokasi dan Penggerakan', 401, 0, '2018-09-06 07:56:21', '0000-00-00 00:00:00'),
+(403, 0, 'Seksi Penyuluhan dan Pendayagunaan PKB/PLKB dan Kader KB', 401, 0, '2018-09-06 07:57:11', '0000-00-00 00:00:00'),
+(404, 0, 'Seksi Pengendalian Penduduk dan Informasi Keluarga', 401, 0, '2018-09-06 07:57:41', '0000-00-00 00:00:00'),
+(405, 0, 'Bidang KB, Ketahanan dan Kesejahteraan Keluarga', 16, 0, '2018-09-06 07:58:38', '0000-00-00 00:00:00'),
+(406, 0, 'Seksi Jaminan Ber-KB', 405, 0, '2018-09-06 07:59:36', '0000-00-00 00:00:00'),
+(407, 0, 'Seksi Pembinaan Kesejahteraan Ber-KB', 405, 0, '2018-09-06 08:01:44', '2018-09-06 08:01:44'),
+(408, 0, 'Seksi Ketahanan dan Kesejahteraan Keluarga', 405, 0, '2018-09-06 08:01:19', '0000-00-00 00:00:00'),
+(409, 0, 'Bidang Pemberdayaan Perempuan dan Perlindungan Anak', 16, 0, '2018-09-06 08:02:37', '0000-00-00 00:00:00'),
+(410, 0, 'Seksi Pengarusutamaan Gender, Pemberdayaan Perempuan', 409, 0, '2018-09-06 08:03:48', '0000-00-00 00:00:00'),
+(411, 0, 'Seksi Perlindungan Perempuan, Anak dan PKK', 409, 0, '2018-09-06 08:04:21', '0000-00-00 00:00:00'),
+(412, 0, 'Seksi Pemenuhan Hak Anak', 408, 0, '2018-09-06 08:05:19', '0000-00-00 00:00:00'),
+(413, 0, 'Sekretariat', 7, 0, '2018-09-06 08:06:11', '0000-00-00 00:00:00'),
+(414, 0, 'Subbagian Umum dan Kepegawaian', 413, 0, '2018-09-06 08:06:26', '0000-00-00 00:00:00'),
+(415, 0, 'Subbagian Perencanaan, Evaluasi dan Pelaporan', 413, 0, '2018-09-06 08:06:44', '0000-00-00 00:00:00'),
+(416, 0, 'Subbagian Keuangan dan BMD', 413, 0, '2018-09-06 08:12:46', '0000-00-00 00:00:00'),
+(417, 0, 'Bidang Pemasaran dan Promosi Wisata', 7, 0, '2018-09-06 08:13:16', '0000-00-00 00:00:00'),
+(418, 0, 'Seksi Promosi', 417, 0, '2018-09-06 08:13:41', '0000-00-00 00:00:00'),
+(419, 0, 'Seksi Analisa Pasar Pariwisata', 417, 0, '2018-09-06 08:14:04', '0000-00-00 00:00:00'),
+(420, 0, 'Seksi Sarana Promosi', 417, 0, '2018-09-06 08:14:25', '0000-00-00 00:00:00'),
+(421, 0, 'Bidang Kebudayaan', 7, 0, '2018-09-06 08:14:40', '0000-00-00 00:00:00'),
+(422, 0, 'Seksi Pembinaan dan Pergelaran Seni Budaya', 421, 0, '2018-09-06 08:15:09', '0000-00-00 00:00:00'),
+(423, 0, 'Seksi Nilai Budaya, Sejarah dan Kepurbakalaan', 421, 0, '2018-09-06 08:15:44', '0000-00-00 00:00:00'),
+(424, 0, 'Seksi Cagar Budaya dan Permuseuman', 421, 0, '2018-09-06 08:16:21', '0000-00-00 00:00:00'),
+(425, 0, 'Bidang Kepemudaan dan Keolahragaan ', 7, 0, '2018-09-06 08:17:01', '0000-00-00 00:00:00'),
+(426, 0, 'Seksi Kepemudaan', 425, 0, '2018-09-06 08:17:30', '0000-00-00 00:00:00'),
+(427, 0, 'Seksi Keolahragaab', 425, 0, '2018-09-06 08:18:24', '0000-00-00 00:00:00'),
+(428, 0, 'Seksi Sarana/Prasarana', 425, 0, '2018-09-06 08:18:52', '0000-00-00 00:00:00'),
+(429, 0, 'Sekretariat', 3, 0, '2018-09-10 02:53:59', '0000-00-00 00:00:00'),
+(430, 0, 'Subbagian Umum dan Kepegawaian', 429, 0, '2018-09-10 02:54:16', '0000-00-00 00:00:00'),
+(432, 0, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 429, 0, '2018-09-10 02:55:41', '0000-00-00 00:00:00'),
+(433, 0, 'Seksi Ekonomi dan Pembangunan', 3, 0, '2018-09-10 02:57:24', '0000-00-00 00:00:00'),
+(434, 0, 'Seksi Kesra dan Pelayanan Umum', 3, 0, '2018-09-10 02:58:00', '0000-00-00 00:00:00'),
+(435, 0, 'Seksi Keuangan Desa', 3, 0, '2018-09-10 02:58:25', '0000-00-00 00:00:00'),
+(436, 0, 'Seksi Trantib', 3, 0, '2018-09-10 02:58:49', '0000-00-00 00:00:00'),
+(437, 0, 'Camat Keliling Danau', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(438, 0, 'Camat Gunung Kerinci', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(439, 0, 'Camat Air hangat Timur', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(440, 0, 'Camat Depati Tujuh', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(442, 0, 'Camat Batang Merangin', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(443, 0, 'Camat Air hangat', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(444, 0, 'Camat Kayu Aro', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(445, 0, 'Camat Gunung Tujuh', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(446, 0, 'Camat Gunung Raya', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(447, 0, 'Cama Kayu Aro Barat', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(448, 0, 'Camat Sitinjau Laut', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(450, 0, 'Camat Siulak', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(451, 0, 'Camat Kayu Aro Barat', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(452, 0, 'Camat Bukit Kerman', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(454, 0, 'Camat Siulak Mukai', 186, 0, '2018-09-27 06:51:52', '0000-00-00 00:00:00'),
+(455, 0, 'Sekretariat', 437, 0, '2018-09-10 03:49:25', '0000-00-00 00:00:00'),
+(456, 0, 'Subbagian Umum dan Kepegawaian', 455, 0, '2018-09-10 03:49:50', '0000-00-00 00:00:00'),
+(457, 0, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 455, 0, '2018-09-10 04:25:04', '0000-00-00 00:00:00'),
+(458, 0, 'Seksi Kesra dan Pelayanan Umum', 437, 0, '2018-09-10 04:25:39', '0000-00-00 00:00:00'),
+(459, 0, 'Seksi Pemerintahan ', 437, 0, '2018-09-10 04:35:09', '2018-09-10 04:35:09'),
+(460, 0, 'Seksi Ekonomi dan Pembangunan', 437, 0, '2018-09-10 04:29:44', '0000-00-00 00:00:00'),
+(461, 0, 'Seksi Pemerintahan', 3, 0, '2018-09-10 04:34:25', '0000-00-00 00:00:00'),
+(463, 0, 'Seksi Trantib', 437, 0, '2018-09-10 04:35:50', '0000-00-00 00:00:00'),
+(464, 0, 'Seksi Keuangan Desa', 437, 0, '2018-09-10 04:37:26', '0000-00-00 00:00:00'),
+(465, 0, 'Sekretariat', 438, 0, '2018-09-10 04:40:42', '0000-00-00 00:00:00'),
+(466, 0, 'Seksi Pemerintahan', 438, 0, '2018-09-10 05:09:43', '2018-09-10 05:09:43'),
+(467, 0, 'Subbagian Umum dan Kepegawaian', 465, 0, '2018-09-10 04:41:15', '0000-00-00 00:00:00'),
+(468, 0, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 465, 0, '2018-09-10 04:41:44', '2018-09-10 04:41:44'),
+(469, 0, 'Seksi Kesra dan Pelayanan Umum', 438, 0, '2018-09-10 04:47:52', '2018-09-10 04:47:52'),
+(472, 0, 'Seksi Keuangan Desa', 438, 0, '2018-09-10 04:46:54', '0000-00-00 00:00:00'),
+(473, 0, 'Seksi Ekonomi dan Pembangunan', 438, 0, '2018-09-10 05:14:21', '0000-00-00 00:00:00'),
+(474, 0, 'Seksi Trantib', 438, 0, '2018-09-10 05:14:46', '0000-00-00 00:00:00'),
+(475, 0, 'Sekretariat', 439, 0, '2018-09-10 05:15:01', '0000-00-00 00:00:00'),
+(476, 0, 'Subbagian Umum dan Kepegawaian', 475, 0, '2018-09-10 05:15:18', '0000-00-00 00:00:00'),
+(477, 0, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 475, 0, '2018-09-17 03:39:57', '0000-00-00 00:00:00'),
+(478, 0, 'Seksi Pemerintahan', 439, 0, '2018-09-17 03:41:14', '0000-00-00 00:00:00'),
+(479, 0, 'Seksi Ekonomi dan Pembangunan', 439, 0, '2018-09-17 03:41:42', '0000-00-00 00:00:00'),
+(480, 0, 'Seksi Kesra dan Pelayanan Umum', 439, 0, '2018-09-17 03:44:43', '0000-00-00 00:00:00'),
+(481, 0, 'Seksi Keuangan Desa', 439, 0, '2018-09-17 03:45:05', '0000-00-00 00:00:00'),
+(482, 0, 'Seksi Trantib', 439, 0, '2018-09-17 03:46:03', '0000-00-00 00:00:00'),
+(483, 0, 'Sekretariat', 440, 0, '2018-09-17 03:47:09', '0000-00-00 00:00:00'),
+(484, 0, 'Subbagian Umum dan Kepegawaian', 483, 0, '2018-09-17 03:47:45', '0000-00-00 00:00:00'),
+(485, 0, 'Subbagian Perencanaan, Keuangan dan Pelaporan', 483, 0, '2018-09-17 03:50:25', '0000-00-00 00:00:00'),
+(486, 0, 'Seksi Pemerintahan', 440, 0, '2018-09-17 04:10:42', '0000-00-00 00:00:00'),
+(487, 0, 'Badan Kesatuan Bangsa dan Politik', 186, 0, '2018-09-27 06:49:01', '2018-09-27 06:49:01'),
+(488, 0, 'Sekretariat', 487, 0, '2018-09-17 05:02:30', '0000-00-00 00:00:00'),
+(489, 0, 'Subbagian Umum dan Kepegawaian', 488, 0, '2018-09-17 05:02:53', '0000-00-00 00:00:00'),
+(490, 0, 'Subbagian Program, evaluasi dan pelaporan', 488, 0, '2018-09-17 05:04:42', '0000-00-00 00:00:00'),
+(491, 0, 'Subbagian Keuangan', 488, 0, '2018-09-17 05:05:09', '0000-00-00 00:00:00'),
+(492, 0, 'Bidang Pengembangan Nilai-Nilai Kebangsaan', 487, 0, '2018-09-17 05:09:43', '0000-00-00 00:00:00'),
+(493, 0, 'Subbidang Ketahanan Bangsa', 492, 0, '2018-09-17 05:10:09', '0000-00-00 00:00:00'),
+(494, 0, 'Subbidang Pranata Sosial dan Budaya Bangsa', 492, 0, '2018-09-17 05:14:26', '0000-00-00 00:00:00'),
+(495, 0, 'Bidang Penanganan Konflik dan Fasilitas Ormas', 487, 0, '2018-09-17 05:15:02', '0000-00-00 00:00:00'),
+(496, 0, 'Subbidang Penanganan Konflik', 495, 0, '2018-09-17 05:16:12', '0000-00-00 00:00:00'),
+(497, 0, 'Subbidang Fasilitas Ormas', 495, 0, '2018-09-17 05:16:50', '0000-00-00 00:00:00'),
+(498, 0, 'Bidang Perlindungan Masyarakat', 487, 0, '2018-09-17 05:17:38', '0000-00-00 00:00:00'),
+(499, 0, 'Subbidang Peningkatan Sumber Daya Manusia dan Perlindungan masyarakat', 498, 0, '2018-09-17 05:24:09', '0000-00-00 00:00:00'),
+(500, 0, 'Subbidang Ketentraman', 498, 0, '2018-09-17 05:24:52', '0000-00-00 00:00:00'),
+(501, 0, 'Bidang Pembinaan Politik', 487, 0, '2018-09-17 05:25:24', '0000-00-00 00:00:00'),
+(502, 0, 'Subbidang Fasilitas Pemilu', 501, 0, '2018-09-17 05:28:24', '0000-00-00 00:00:00'),
+(503, 0, 'Subbidang Komunikasi dan Pendidikan Politik', 501, 0, '2018-09-17 05:28:57', '0000-00-00 00:00:00'),
+(504, 0, 'Sekretariat', 26, 0, '2018-09-17 05:53:24', '0000-00-00 00:00:00'),
+(505, 0, 'Subbagian Umum dan Kepegawaian', 504, 0, '2018-09-17 05:54:35', '0000-00-00 00:00:00'),
+(506, 0, 'Subbagian Program ', 504, 0, '2018-09-17 06:06:25', '0000-00-00 00:00:00'),
+(507, 0, 'Subbagian Keuangan', 504, 0, '2018-09-17 06:06:54', '0000-00-00 00:00:00'),
+(508, 0, 'Bidang Pencegahan dan Kesiapsiagaan', 26, 0, '2018-09-17 06:09:49', '0000-00-00 00:00:00'),
+(509, 0, 'Seksi Pencegahan', 508, 0, '2018-09-17 07:36:36', '0000-00-00 00:00:00'),
+(510, 0, 'Seksi Kesiapsiagaan ', 508, 0, '2018-09-17 07:38:17', '0000-00-00 00:00:00'),
+(511, 0, 'Bidang Kedaruratan dan Logistik', 26, 0, '2018-09-17 07:38:51', '0000-00-00 00:00:00'),
+(512, 0, 'Seksi Kedaruratan', 511, 0, '2018-09-17 07:44:42', '0000-00-00 00:00:00'),
+(513, 0, 'Seksi Logistik', 511, 0, '2018-09-17 07:45:07', '0000-00-00 00:00:00'),
+(514, 0, 'Bidang Rehabilitasi dan Rekonstruksi', 26, 0, '2018-09-17 07:45:45', '0000-00-00 00:00:00'),
+(515, 0, 'Seksi Rehabilitasi', 514, 0, '2018-09-17 07:46:17', '0000-00-00 00:00:00'),
+(516, 0, 'Seksi Rekonstruksi', 514, 0, '2018-09-17 07:46:45', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `master_upaya_fisik`
 --
 
 CREATE TABLE `master_upaya_fisik` (
@@ -7629,7 +7682,7 @@ CREATE TABLE `master_upaya_fisik` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `master_upaya_fisik`
+-- Dumping data for table `master_upaya_fisik`
 --
 
 INSERT INTO `master_upaya_fisik` (`id`, `nama`, `keterangan`, `created_at`, `updated_at`) VALUES
@@ -7663,7 +7716,7 @@ INSERT INTO `master_upaya_fisik` (`id`, `nama`, `keterangan`, `created_at`, `upd
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tugas_pokok_jabatan`
+-- Table structure for table `tugas_pokok_jabatan`
 --
 
 CREATE TABLE `tugas_pokok_jabatan` (
@@ -7678,7 +7731,7 @@ CREATE TABLE `tugas_pokok_jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tugas_pokok_jabatan`
+-- Dumping data for table `tugas_pokok_jabatan`
 --
 
 INSERT INTO `tugas_pokok_jabatan` (`id`, `id_anjab`, `id_master_tugas_pokok`, `hasil_kerja`, `jumlah_beban`, `waktu_penyelesaian`, `created_at`, `updated_at`) VALUES
@@ -7722,7 +7775,7 @@ INSERT INTO `tugas_pokok_jabatan` (`id`, `id_anjab`, `id_master_tugas_pokok`, `h
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -7737,7 +7790,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `id_unit_kerja`, `username`, `password`, `nama`, `role`, `created_at`, `updated_at`) VALUES
@@ -7757,198 +7810,222 @@ INSERT INTO `users` (`id`, `id_unit_kerja`, `username`, `password`, `nama`, `rol
 --
 
 --
--- Indeks untuk tabel `anjab`
+-- Indexes for table `anjab`
 --
 ALTER TABLE `anjab`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `master_bakat_kerja`
+-- Indexes for table `master_bakat_kerja`
 --
 ALTER TABLE `master_bakat_kerja`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `master_fungsi_fisik`
+-- Indexes for table `master_eselon`
+--
+ALTER TABLE `master_eselon`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `master_fungsi_fisik`
 --
 ALTER TABLE `master_fungsi_fisik`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `master_jabatan`
+-- Indexes for table `master_jabatan`
 --
 ALTER TABLE `master_jabatan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `master_keterampilan_kerja`
+-- Indexes for table `master_keterampilan_kerja`
 --
 ALTER TABLE `master_keterampilan_kerja`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `master_kondisi_lingkungan_kerja`
+-- Indexes for table `master_kondisi_lingkungan_kerja`
 --
 ALTER TABLE `master_kondisi_lingkungan_kerja`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `master_minat_kerja`
+-- Indexes for table `master_minat_kerja`
 --
 ALTER TABLE `master_minat_kerja`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `master_syarat_jabatan`
+-- Indexes for table `master_syarat_jabatan`
 --
 ALTER TABLE `master_syarat_jabatan`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_jabatan` (`id_jabatan`);
 
 --
--- Indeks untuk tabel `master_temperamen_kerja`
+-- Indexes for table `master_temperamen_kerja`
 --
 ALTER TABLE `master_temperamen_kerja`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `master_tugas_pokok_jabatan`
+-- Indexes for table `master_tugas_pokok_jabatan`
 --
 ALTER TABLE `master_tugas_pokok_jabatan`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_jabatan` (`id_jabatan`);
 
 --
--- Indeks untuk tabel `master_unit_kerja`
+-- Indexes for table `master_unit_kerja`
 --
 ALTER TABLE `master_unit_kerja`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `master_upaya_fisik`
+-- Indexes for table `master_unit_kerja_old`
+--
+ALTER TABLE `master_unit_kerja_old`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `master_upaya_fisik`
 --
 ALTER TABLE `master_upaya_fisik`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tugas_pokok_jabatan`
+-- Indexes for table `tugas_pokok_jabatan`
 --
 ALTER TABLE `tugas_pokok_jabatan`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id_master_tugas_pokok` (`id_master_tugas_pokok`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `anjab`
+-- AUTO_INCREMENT for table `anjab`
 --
 ALTER TABLE `anjab`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
--- AUTO_INCREMENT untuk tabel `master_bakat_kerja`
+-- AUTO_INCREMENT for table `master_bakat_kerja`
 --
 ALTER TABLE `master_bakat_kerja`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT untuk tabel `master_fungsi_fisik`
+-- AUTO_INCREMENT for table `master_eselon`
+--
+ALTER TABLE `master_eselon`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `master_fungsi_fisik`
 --
 ALTER TABLE `master_fungsi_fisik`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT untuk tabel `master_jabatan`
+-- AUTO_INCREMENT for table `master_jabatan`
 --
 ALTER TABLE `master_jabatan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3962;
 
 --
--- AUTO_INCREMENT untuk tabel `master_keterampilan_kerja`
+-- AUTO_INCREMENT for table `master_keterampilan_kerja`
 --
 ALTER TABLE `master_keterampilan_kerja`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `master_kondisi_lingkungan_kerja`
+-- AUTO_INCREMENT for table `master_kondisi_lingkungan_kerja`
 --
 ALTER TABLE `master_kondisi_lingkungan_kerja`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
--- AUTO_INCREMENT untuk tabel `master_minat_kerja`
+-- AUTO_INCREMENT for table `master_minat_kerja`
 --
 ALTER TABLE `master_minat_kerja`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `master_syarat_jabatan`
+-- AUTO_INCREMENT for table `master_syarat_jabatan`
 --
 ALTER TABLE `master_syarat_jabatan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2063;
 
 --
--- AUTO_INCREMENT untuk tabel `master_temperamen_kerja`
+-- AUTO_INCREMENT for table `master_temperamen_kerja`
 --
 ALTER TABLE `master_temperamen_kerja`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `master_tugas_pokok_jabatan`
+-- AUTO_INCREMENT for table `master_tugas_pokok_jabatan`
 --
 ALTER TABLE `master_tugas_pokok_jabatan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=743;
 
 --
--- AUTO_INCREMENT untuk tabel `master_unit_kerja`
+-- AUTO_INCREMENT for table `master_unit_kerja`
 --
 ALTER TABLE `master_unit_kerja`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `master_unit_kerja_old`
+--
+ALTER TABLE `master_unit_kerja_old`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=517;
 
 --
--- AUTO_INCREMENT untuk tabel `master_upaya_fisik`
+-- AUTO_INCREMENT for table `master_upaya_fisik`
 --
 ALTER TABLE `master_upaya_fisik`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT untuk tabel `tugas_pokok_jabatan`
+-- AUTO_INCREMENT for table `tugas_pokok_jabatan`
 --
 ALTER TABLE `tugas_pokok_jabatan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `master_syarat_jabatan`
+-- Constraints for table `master_syarat_jabatan`
 --
 ALTER TABLE `master_syarat_jabatan`
   ADD CONSTRAINT `master_syarat_jabatan_ibfk_1` FOREIGN KEY (`id_jabatan`) REFERENCES `master_jabatan` (`id`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `master_tugas_pokok_jabatan`
+-- Constraints for table `master_tugas_pokok_jabatan`
 --
 ALTER TABLE `master_tugas_pokok_jabatan`
   ADD CONSTRAINT `master_tugas_pokok_jabatan_ibfk_1` FOREIGN KEY (`id_jabatan`) REFERENCES `master_jabatan` (`id`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tugas_pokok_jabatan`
+-- Constraints for table `tugas_pokok_jabatan`
 --
 ALTER TABLE `tugas_pokok_jabatan`
   ADD CONSTRAINT `tugas_pokok_jabatan_ibfk_1` FOREIGN KEY (`id_master_tugas_pokok`) REFERENCES `master_tugas_pokok_jabatan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
