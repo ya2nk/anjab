@@ -11,7 +11,8 @@ class Anjab extends ADMIN_Controller
 	
 	function index()
 	{
-		$this->load_admin('index');
+		$data['unit_kerja'] = $this->m_unit_kerja->where_parent(0)->dropdown('id','unit_kerja');
+		$this->load_admin('index',$data);
 	}
 	
 	function data()
@@ -29,6 +30,7 @@ class Anjab extends ADMIN_Controller
 		if ($id == 0 && $id_unit != null){
 			$row_u = (object) $this->m_unit_kerja->unit_kerja($id_unit);
 			$row_u->id_unit_kerja = $id_unit;
+			
 			$data['row'] = $row_u;
 			
 		}
@@ -191,7 +193,7 @@ class Anjab extends ADMIN_Controller
 		if ($row = $this->m_anjab->get_full_jabatan($id)){
 			$data['row'] = $row;
 			
-			//print_r($row); exit();
+		   //print_r($row); die;
 			$list = $this->m_unit_kerja->last_tree_unit_kerja($row->id_unit_kerja);
 			
 			$data['tree'] = buildTree($list,$list[0]['parent']);
@@ -223,6 +225,7 @@ class Anjab extends ADMIN_Controller
 				//$this->pdf->render();
 				//$this->pdf->stream('Formulir_jabatan.pdf',['Attachment'=>false]); 
 				//$this->load->view('jabatan_cetak',$data);
+				
 				$dompdf = new Dompdf();
                 $dompdf->loadHtml($this->load->view('jabatan_cetak',$data,true));
 

@@ -79,7 +79,10 @@ class M_unit_kerja extends MY_Model
 	
 	function detail_unit_kerja($id,&$result=array())
 	{
-		$result[] = $this->db->select('A.*,B.eselon')->from('master_unit_kerja A')->join('master_eselon B','A.id_eselon=B.id','left')->where('A.id',$id)->get()->row_array();
+		if($id != 0) {
+			$result[] = $this->db->select('A.*,B.eselon')->from('master_unit_kerja A')->join('master_eselon B','A.id_eselon=B.id','left')->where('A.id',$id)->get()->row_array();
+		}
+		
 		$rows = $this->where_parent($id)->result_array();
 		
 		if ($rows){

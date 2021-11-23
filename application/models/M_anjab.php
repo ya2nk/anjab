@@ -24,7 +24,11 @@ class M_anjab extends MY_Model
 		$select = $this->table.'.*,master_jabatan.nama_jabatan,master_unit_kerja.unit_kerja';
 		$join   = [['master_jabatan','master_jabatan.id = '.$this->table.".id_jabatan"],
 					['master_unit_kerja','master_unit_kerja.id = '.$this->table.".id_unit_kerja"]];
-		$result = $this->get_datatables($select,$join);
+		$where  = ['jpt_madya'=>@$_POST['unit_kerja']];
+		if (isset($_POST['jpt_pratama']) && $_POST['jpt_pratama'] != "") {
+			$where['jpt_pratama'] = $_POST['jpt_pratama'];
+		}
+		$result = $this->get_datatables($select,$join,$where);
 		$rows = $result['data'];
 		if ($rows){
 			$no = $_POST['start'] + 1;
@@ -62,14 +66,16 @@ class M_anjab extends MY_Model
 	{
 		
 		if ($parent == 0){
-			$rows = $this->db->select('A.*,C.nama_jabatan,C.eselon,B.jumlah_kebutuhan,B.jumlah_saat_ini')->from('master_unit_kerja A')
+			$rows = $this->db->select('A.*,C.nama_jabatan,C.eselon,B.jumlah_kebutuhan,B.jumlah_saat_ini,D.eselon as nama_eselon')->from('master_unit_kerja A')
 							 ->join('anjab B','A.id=B.id_unit_kerja','left')
 							 ->join('master_jabatan C','B.id_jabatan=C.id','left')
+							 ->join('master_eselon D','A.id_eselon=D.id','left')
 							 ->where('A.id',$id)->get()->result_array();
 		} else {
-			$rows = $this->db->select('A.*,C.nama_jabatan,C.eselon,B.jumlah_kebutuhan,B.jumlah_saat_ini')->from('master_unit_kerja A')
+			$rows = $this->db->select('A.*,C.nama_jabatan,C.eselon,B.jumlah_kebutuhan,B.jumlah_saat_ini,D.eselon as nama_eselon')->from('master_unit_kerja A')
 							 ->join('anjab B','A.id=B.id_unit_kerja','left')
 							 ->join('master_jabatan C','B.id_jabatan=C.id','left')
+							 ->join('master_eselon D','A.id_eselon=D.id','left')
 							 ->where('A.parent',$parent)->get()->result_array();
 		}
 		

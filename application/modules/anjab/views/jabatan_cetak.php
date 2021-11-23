@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html> 
 <head>
-
-
-
 <style>
 	@media print {
 		.no-print {
@@ -17,7 +14,9 @@
 	body,table {
 		font-size:11px;
 	}
-	
+	td{
+    	word-wrap:break-word
+	}
 	
 </style>
 </head>
@@ -27,47 +26,56 @@
  <center><h2>INFORMASI JABATAN</h2></center>
 	<table class="table-borderless" width="100%">
 		<tr>
-			<th width="25%">1. NAMA JABATAN</th>
+			<td width="25%">1. NAMA JABATAN</td>
 			<td>: <?= @$row->nama_jabatan; ?></td>
 		</tr>
 		<tr>
-			<th>2. KODE JABATAN</th>
+			<td>2. KODE JABATAN</td>
 			<td>: <?= @$row->kode_jabatan; ?></td>
 		</tr>
 		<tr>
-			<th>3. UNIT KERJA</th>
-			<td>: <?= @$row->unit_kerja; ?></td>
-		</tr>
-		<tr>
-			<td style="padding-left:30px">Eselon I</td>
+			<td>3. UNIT KERJA</td>
 			<td>: </td>
 		</tr>
 		<tr>
-			<td style="padding-left:30px">Eselon II</td>
-			<td>: </td>
+			
+			<td>&nbsp;3.1. Eselon IV</td>
+			
+			<td>: <?= $row->nama_administrator; ?></td>
 		</tr>
 		<tr>
-			<td style="padding-left:30px">Eselon III</td>
-			<td>: </td>
+			
+			<td>&nbsp;3.2. Eselon III</td>
+			
+			<td>: <?= $row->nama_jpt_pratama; ?></td>
 		</tr>
 		<tr>
-			<td style="padding-left:30px">Eselon IV</td>
-			<td>: </td>
+			
+			<td>&nbsp;3.3. Eselon II</td>
+			
+			<td>: <?= $row->nama_jpt_madya; ?></td>
 		</tr>
 		<tr>
-			<th colspan="2">4. Kedudukan Dalam Struktur Organisasi</th>
+			
+			<td>&nbsp;3.4. Eselon I</td>
+			
+			<td>: -</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">4. Kedudukan Dalam Struktur Organisasi</td>
 		</tr>
 		<tr>
-			<td colspan="2"><img src="<?= @$image; ?>" width="600"></td>
+			<td colspan="2" align="center"><img src="<?= @$image; ?>" width="600"></td>
 		</tr>
 		<tr>
-			<th colspan="2">5. IKTISAR JABATAN</th>
+			<td colspan="2">5. IKTISAR JABATAN</td>
 		</tr>
 		<tr>
 			<td colspan="2" style="font-family:Courier New, Courier, monospace;padding-left:10px"><i><?= @$row->deskripsi_jabatan; ?></i></td>
 		</tr>
 		<tr>
-			<th colspan="2">6. URAIAN TUGAS</th>
+			<td colspan="2">6. URAIAN TUGAS</td>
 		</tr>
 		<tr>				
 			<td colspan="2" style="font-family:Courier New, Courier, monospace">
@@ -89,7 +97,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th colspan="2">7. BAHAN KERJA</th>
+			<td colspan="2">7. BAHAN KERJA</td>
 		</tr>				
 		<tr>				
 			<td colspan="2" style="padding-left:10px">
@@ -110,7 +118,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th colspan="2">8. PERANGKAT KERJA</th>
+			<td colspan="2">8. PERANGKAT KERJA</td>
 		</tr>
 		<tr>	
 			<td style="padding-left:10px" colspan="2">
@@ -206,7 +214,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th colspan="2">13. KONDISI LINGKUNGAN KERJA</th>
+			<td colspan="2">13. KONDISI LINGKUNGAN KERJA</td>
 		</tr>
 		<tr>
 			<td colspan="2" style="padding-left:10px">
@@ -214,14 +222,14 @@
 					<tr style="background-color:#ccc">
 							<th>NO</th>
 							<th>ASPEK</th>
-							<th>FAKTOR</th>
+							<th width="300">FAKTOR</th>
 									
 					</tr>
 					<?php if ($lingkungan) : foreach ($lingkungan as $k=>$l) :  ?>
 					<tr>
 						<td><?= $k+1; ?></td>
 						<td><?= $l->aspek; ?></td>
-						<td><?= $l->faktor; ?></td>
+						<td style="word-wrap:break-word"><?= str_replace('"','',$l->faktor); ?></td>
 					</tr>
 						<?php endforeach; endif; ?>
 				</table>
@@ -259,7 +267,7 @@
 			</tr>
 		<?php $jenis = $sya->jenis; endforeach; endif; ?>
 			<tr>
-				<td colspan="2" style="padding-left:20px"><?= $abjad[$key+1]; ?>. Keterampilan Kerja</td>
+				<td colspan="2" style="padding-left:20px"><?= @$abjad[$key+1]; ?>. Keterampilan Kerja</td>
 			</tr>
 			<tr>
 				<td colspan="2" style="padding-left:40px">
@@ -274,7 +282,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="padding-left:20px"><?= $abjad[$key+2]; ?>. Bakat Kerja</td>
+				<td colspan="2" style="padding-left:20px"><?= @$abjad[$key+2]; ?>. Bakat Kerja</td>
 			</tr>
 			<tr>
 				<td colspan="2" style="padding-left:40px">
@@ -289,7 +297,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="padding-left:20px"><?= $abjad[$key+3]; ?>. Temperamen Kerja</td>
+				<td colspan="2" style="padding-left:20px"><?= @$abjad[$key+3]; ?>. Temperamen Kerja</td>
 			</tr>
 			<tr>
 				<td colspan="2" style="padding-left:40px">
@@ -304,7 +312,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="padding-left:20px"><?= $abjad[$key+4]; ?>. Minat Kerja</td>
+				<td colspan="2" style="padding-left:20px"><?= @$abjad[$key+4]; ?>. Minat Kerja</td>
 			</tr>
 			<tr>
 				<td colspan="2" style="padding-left:40px">
@@ -319,7 +327,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="padding-left:20px"><?= $abjad[$key+5]; ?>. Upaya Fisik</td>
+				<td colspan="2" style="padding-left:20px"><?= @$abjad[$key+5]; ?>. Upaya Fisik</td>
 			</tr>
 			<tr>
 				<td colspan="2" style="padding-left:40px">
@@ -334,7 +342,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="padding-left:20px"><?= $abjad[$key+6]; ?>. Kondisi Fisik</td>
+				<td colspan="2" style="padding-left:20px"><?= @$abjad[$key+6]; ?>. Kondisi Fisik</td>
 			</tr>
 			<tr>
 				<td colspan="2" style="padding-left:40px" >
@@ -373,7 +381,7 @@
 						</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="padding-left:20px"><?= $abjad[$key+7]; ?>. Fungsi Pekerjaan</td>
+				<td colspan="2" style="padding-left:20px"><?= @$abjad[$key+7]; ?>. Fungsi Pekerjaan</td>
 			</tr>
 			<tr>
 				<td colspan="2" style="padding-left:40px">
@@ -398,13 +406,13 @@
 						</td>
 					</tr>
 			<tr>
-				<td colspan="2" style="padding-left:20px"><?= $abjad[$key+8]; ?>. Pengalaman Kerja</td>
+				<td colspan="2" style="padding-left:20px"><?= @$abjad[$key+8]; ?>. Pengalaman Kerja</td>
 			</tr>
 			<tr>
 				<td colspan="2" style="padding-left:40px"><i><?= $row->pengalaman_kerja; ?></i></td>
 			</tr>
 			<tr>
-				<td colspan="2" style="padding-left:20px"><?= $abjad[$key+9]; ?>. Pengetahuan kerja</td>
+				<td colspan="2" style="padding-left:20px"><?= @$abjad[$key+9]; ?>. Pengetahuan kerja</td>
 			</tr>
 			<tr>
 				<td colspan="2" style="padding-left:40px"><i><?= $row->pengetahuan_kerja; ?></i></td>

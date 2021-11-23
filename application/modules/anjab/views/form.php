@@ -13,7 +13,7 @@
 					<h2>Form Jabatan</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a href="javascript:void(0)" onclick="saveForm()"  class="btn btn-success"><i class="fa fa-save"></i> Simpan</a></li>
-						<li><a href="<?= site_url('anjab'); ?>"  class="btn btn-warning"><i class="fa fa-times"></i> Batal</a></li>
+						<li><a href="#" onclick="history.back()" class="btn btn-warning"><i class="fa fa-times"></i> Batal</a></li>
                     </ul>
 					<div class="clearfix"></div>
 				  </div>
@@ -570,7 +570,7 @@
 				});
 			}
 		},'json');
-		$('#unit_kerja').val(that.value);
+		//$('#unit_kerja').val(that.value);
 	}
 	
 	function tambahBahanKerja()

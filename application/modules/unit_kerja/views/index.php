@@ -126,13 +126,16 @@
 		
 	});
 	
-	function loadTable(id=null)
+	function loadTable(id=0)
 	{
 		$('.tree tbody > tr').detach();
 		var url = '<?= site_url('unit_kerja/data'); ?>'
 		if (id != null){
 			url = '<?= site_url('unit_kerja/detail'); ?>/'+id;
 		}
+		
+		url = '<?= site_url('unit_kerja/detail'); ?>/'+id;
+		
 		$.post(url,{},function(result){
 			$('.tree tbody').html(result);
 			$('.tree').unbind();

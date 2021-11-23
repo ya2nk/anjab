@@ -39,34 +39,29 @@
 					</tr>
 					<tr>
 						<td width="4%"></td>
-						<td>a. JPT Madya</td>
-						<td>:</td>
-						<td><?= $row->nama_jpt_madya; ?></td>
-					</tr>
-					<tr>
-						<td width="4%"></td>
-						<td>b. JPT Pratama</td>
-						<td>:</td>
-						<td><?= $row->nama_jpt_pratama; ?></td>
-					</tr>
-					<tr>
-						<td width="4%"></td>
-						<td>c. Administrator</td>
+						<td>3.1. Eselon IV</td>
 						<td>:</td>
 						<td><?= $row->nama_administrator; ?></td>
 					</tr>
 					<tr>
 						<td width="4%"></td>
-						<td>d. Pengawas</td>
+						<td>3.2. Eselon III</td>
 						<td>:</td>
-						<td><?= $row->nama_pengawas; ?></td>
+						<td><?= $row->nama_jpt_pratama; ?></td>
 					</tr>
 					<tr>
 						<td width="4%"></td>
-						<td>e. Pelaksana</td>
+						<td>3.3. Eselon II</td>
 						<td>:</td>
-						<td><?= $row->nama_pelaksana; ?></td>
+						<td><?= $row->nama_jpt_madya; ?></td>
 					</tr>
+					<tr>
+						<td width="4%"></td>
+						<td>3.4. Eselon I</td>
+						<td>:</td>
+						<td>-</td>
+					</tr>
+					
 					<tr>
 						<th width="4%">4. </th>
 						<th>IKTISAR JABATAN</th>

@@ -94,8 +94,12 @@ class Unit_kerja extends ADMIN_Controller {
 	
 	function detail($id)
 	{
+		$parent = 0;
 		$row = $this->m_unit_kerja->get_by_id($id);
-		tableTree(buildTree($this->m_unit_kerja->detail_unit_kerja($id),$row->parent),$row->parent,true);
+		if ($row) {
+			$parent = $row->parent;
+		}
+		tableTree(buildTree($this->m_unit_kerja->detail_unit_kerja($id),$parent),$parent,true);
 		/*
 		$id = $this->_post('id');
 		$data['rows'] = $this->m_unit_kerja->get_detail_unit_kerja($id);

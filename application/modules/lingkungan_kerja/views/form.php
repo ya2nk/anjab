@@ -49,7 +49,7 @@
 				if (result == 'success'){
 					$.alert('Data Berhasil disimpan');
 					$('#myModal').modal('hide');
-					table.draw();
+					table.draw(false);
 				} else {
 					$.alert(result);
 				}

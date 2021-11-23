@@ -194,6 +194,27 @@ function chartTree($TreeArray,$main=true)
     echo '</ol>';
 }
 
+function chartTree2($TreeArray,$main=true)
+{
+	
+    echo "<ul>";
+    foreach($TreeArray as $arr)
+    {
+		$nama_jabatan = $arr['nama_jabatan'] == null ? $arr['unit_kerja'] : $arr['nama_jabatan'];
+		$eselon = "Eselon : ".$arr['nama_eselon'];
+		$text = "<span class='tf-nc'>$nama_jabatan<br>($eselon)</span>";
+		
+        echo '<li>';
+		echo $text;
+        if(isset($arr['_children'])) 
+        {
+                chartTree2($arr['_children'],false);
+        }
+		echo '</li>';
+    }
+    echo '</ul>';
+}
+
 
 function listTree($TreeArray,$main=true,$id=0)
 {
