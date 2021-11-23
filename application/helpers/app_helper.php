@@ -200,9 +200,24 @@ function chartTree2($TreeArray,$main=true)
     echo "<ul>";
     foreach($TreeArray as $arr)
     {
-		$nama_jabatan = $arr['nama_jabatan'] == null ? $arr['unit_kerja'] : $arr['nama_jabatan'];
 		$eselon = "Eselon : ".$arr['nama_eselon'];
-		$text = "<span class='tf-nc'>$nama_jabatan<br>($eselon)</span>";
+		$nama_jabatan = !isset($arr['nama_jabatan'])  ? $arr['unit_kerja'] : $arr['nama_jabatan'];
+		$nama_jabatan .= "<br>($eselon)";
+		
+		if (isset($arr['nama_jabatan'])) {
+			$nama_jabatan = "<table width='100%' border='1' style='border-collapse:collapse;'>
+								<tr style='background-color:#ccc'>
+									<th>Jabatan</th>.
+									<th>Jml</th>
+								</tr>
+								<tr>
+									<td>$nama_jabatan</td>
+									<td>".$arr['jumlah_saat_ini']."</td>
+								</tr>
+							</table>";
+		}
+		
+		$text = "<span class='tf-nc' style='background-color:".(!isset($arr['nama_jabatan']) ? '#33d4ff' :'#fff')."'>$nama_jabatan</span>";
 		
         echo '<li>';
 		echo $text;

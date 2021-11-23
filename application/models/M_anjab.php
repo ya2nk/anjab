@@ -66,15 +66,11 @@ class M_anjab extends MY_Model
 	{
 		
 		if ($parent == 0){
-			$rows = $this->db->select('A.*,C.nama_jabatan,C.eselon,B.jumlah_kebutuhan,B.jumlah_saat_ini,D.eselon as nama_eselon')->from('master_unit_kerja A')
-							 ->join('anjab B','A.id=B.id_unit_kerja','left')
-							 ->join('master_jabatan C','B.id_jabatan=C.id','left')
+			$rows = $this->db->select('A.*,D.eselon as nama_eselon')->from('master_unit_kerja A')
 							 ->join('master_eselon D','A.id_eselon=D.id','left')
 							 ->where('A.id',$id)->get()->result_array();
 		} else {
-			$rows = $this->db->select('A.*,C.nama_jabatan,C.eselon,B.jumlah_kebutuhan,B.jumlah_saat_ini,D.eselon as nama_eselon')->from('master_unit_kerja A')
-							 ->join('anjab B','A.id=B.id_unit_kerja','left')
-							 ->join('master_jabatan C','B.id_jabatan=C.id','left')
+			$rows = $this->db->select('A.*,D.eselon as nama_eselon')->from('master_unit_kerja A')
 							 ->join('master_eselon D','A.id_eselon=D.id','left')
 							 ->where('A.parent',$parent)->get()->result_array();
 		}
@@ -82,6 +78,13 @@ class M_anjab extends MY_Model
 		if ($rows){
 			foreach($rows as $row){
 				$result[] = $row;
+				$anjab    = $this->db->select("B.id,C.nama_jabatan,C.eselon as nama_eselon,B.jumlah_kebutuhan,B.jumlah_saat_ini,$row[id] as parent")->from("anjab as B")
+								->join("master_jabatan as C","B.id_jabatan=C.id")->where('id_unit_kerja',$row['id'])->get()->result_array();
+				if ($anjab) {
+					foreach($anjab as $jab) {
+						$result[] = $jab;
+					}
+				}
 				$result = $this->get_parent_child($id,$row['id'],$result);
 			}
 		}
